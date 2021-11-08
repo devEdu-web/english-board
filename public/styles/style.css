@@ -1,0 +1,80 @@
+:root {
+    --background-color: #1E1E2E;
+    --nouns-color: #F75C03;
+    --verbs-color: #E71D36;
+    --adverbs-color: #1EFC1E;
+    --adjectives-color: #347FC4;
+    --phrasal-verbs-color: #F7E733;
+    --emphasis-pink: #D90368;       
+}
+
+body {
+    background-color: var(--background-color);
+    color: white;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    height: 100vh;
+    width: 25vw;
+    border-right: 1px solid #5d5d69;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 24px;
+    
+}
+
+li a {
+    color: #5d5d69;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: var(--emphasis-pink);
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+.menu-icon{
+    width: 60px;
+}
+
+.image-list {
+    width: 40px;
+}
+
+.offcanvas {
+    display: none;
+}
+
+@media screen and (max-width: 775px){
+
+    .menu {
+        width: 34vw;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+    .menu {
+        /* background-color: red; */
+        display: none;
+    }
+
+    .offcanvas {
+        display: flex;
+        width: 55vw;
+        background-color: var(--background-color);
+    }
+}
