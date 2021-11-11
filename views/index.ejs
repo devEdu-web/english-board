@@ -12,9 +12,9 @@
 
 
 
-    <main class="d-flex">
+    <section class="d-flex">
 
-        <section class="menu pt-4">
+        <nav class="menu pt-2">
             <h2>EnglishBoard</h2>
             <ul>
                 <li id="dashboard-list-item">
@@ -48,16 +48,23 @@
                     </a>
                 </li>
             </ul>
-        </section>
+        </nav>
 
 
         <section>
 
-
-            <div class="d-flex align-items-center" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <!-- Aqui começa a gambiarra -->
+            <div class="nav-full">
                 <img class="menu-icon" src="/images/menu-icon80x80.png" alt="">
                 <h1>Dashboard</h1>
             </div>
+
+            <div class="nav-mobile" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <img class="menu-icon" src="/images/menu-icon80x80.png" alt="">
+                <h1>Dashboard</h1>
+            </div>
+        <!-- Aqui a gambiarra termina -->
+
 
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
@@ -67,7 +74,7 @@
             </div>
 
         </section>
-    </main>
+    </section>
 
 
 

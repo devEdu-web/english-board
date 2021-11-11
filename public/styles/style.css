@@ -57,6 +57,15 @@ h1 {
     display: none;
 }
 
+.nav-full {
+    display: flex;
+    align-items: center;
+}
+
+.nav-mobile {
+    display: none;
+}
+
 @media screen and (max-width: 775px){
 
     .menu {
@@ -76,5 +85,14 @@ h1 {
         display: flex;
         width: 55vw;
         background-color: var(--background-color);
+    }
+
+    .nav-mobile {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-full {
+        display: none;
     }
 }
