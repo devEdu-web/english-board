@@ -12,9 +12,9 @@
 
 
 
-    <section class="d-flex">
+    <section class="all-page d-flex">
 
-        <nav class="menu pt-2">
+        <nav class="menu pt-3">
             <h2>EnglishBoard</h2>
             <ul>
                 <li id="dashboard-list-item">
@@ -50,31 +50,96 @@
             </ul>
         </nav>
 
-
-        <section>
-
-        <!-- Aqui começa a gambiarra -->
-            <div class="nav-full">
-                <img class="menu-icon" src="/images/menu-icon80x80.png" alt="">
-                <h1>Dashboard</h1>
-            </div>
-
-            <div class="nav-mobile" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                <img class="menu-icon" src="/images/menu-icon80x80.png" alt="">
-                <h1>Dashboard</h1>
-            </div>
-        <!-- Aqui a gambiarra termina -->
-
-
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div class="offcanvas-header">
-                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <section class="page-content">
+            
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center flex-grow-1">
+                    <img src="/images/menu-icon80x80.png" alt="">
+                    <h1>Dashboard</h1>
                 </div>
+
+                <div class="user dropdown">
+
+                    <div id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="user-picture img-fluid" src="https://image.shutterstock.com/image-illustration/room-two-isometric-walls-designed-600w-1933787411.jpg" alt="">
+                        <img class="arrow" src="/images/arrow80x80.png" alt="">
+                    </div>
+
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <li><a class="dropdown-item" href="#">Configs</a></li>
+                      </ul>
+
+                </div>
+
             </div>
+
+            <main class="d-flex flex-column data-container gap-3">
+
+                <div class="row counters gap-5">
+                    <div class="col words-counter d-flex flex-column gap-3">
+                        <div class="words-wrapper d-flex justify-content-between align-items-center">
+                            <h2>Words</h2>
+                            <span class="fs-5">9999</span>
+                        </div>
+                        <span>Last Register: Dashboard</span>
+                    </div>
+
+
+                    <div class="col hours-counter d-flex flex-column gap-3">
+                        <div class="words-wrapper d-flex justify-content-between align-items-center">
+                            <h2>Hours</h2>
+                            <span class="fs-5">9999</span>
+                        </div>
+                        <span>Last Register: Dashboard</span>
+                    </div>
+                </div>
+
+
+                <div class="row informations">
+
+                    <div class="col words-information">
+                        Terminei a primeira linha, falta a segunda linha ainda
+                    </div>
+
+                    <div class="col hours-information">
+                        d
+                    </div>
+
+
+                </div>
+                
+
+            </main>
+
+
+
+
+
+
 
         </section>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </section>
+
+    
 
 
 

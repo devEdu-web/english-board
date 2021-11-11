@@ -5,7 +5,8 @@
     --adverbs-color: #1EFC1E;
     --adjectives-color: #347FC4;
     --phrasal-verbs-color: #F7E733;
-    --emphasis-pink: #D90368;       
+    --emphasis-pink: #D90368;  
+    --cards-background: #27293D;     
 }
 
 body {
@@ -14,12 +15,13 @@ body {
 }
 
 .menu {
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    height: 100vh;
-    width: 25vw;
+    min-height: 100vh;
+    width: 20vw;
     border-right: 1px solid #5d5d69;
 }
 
@@ -53,17 +55,50 @@ h1 {
     width: 40px;
 }
 
-.offcanvas {
-    display: none;
+.page-content {
+    width: calc(100% - 20vw);
+    /* background-color: green; */
 }
 
-.nav-full {
+.user {
     display: flex;
     align-items: center;
+    width: 100px;
+    gap: 5px;
+    cursor: pointer;
+    /* background-color: blue; */
 }
 
-.nav-mobile {
-    display: none;
+.user-picture {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.arrow{
+    width: 30%;
+}
+
+.dropdown-menu {
+    background-color: #14141f
+}
+.dropdown-item {
+    color: white;
+}
+
+.col {
+    background-color: var(--cards-background);
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    padding: 10px 32px;
+    margin: 32px;
+    min-height: 30vh;
+}
+
+.row {
+    /* max-width: 100%; */
+    /* width: 50vw; */
+    /* background-color: green; */
+    margin: 0;
 }
 
 @media screen and (max-width: 775px){
@@ -76,23 +111,5 @@ h1 {
 
 
 @media screen and (max-width: 600px) {
-    .menu {
-        /* background-color: red; */
-        display: none;
-    }
 
-    .offcanvas {
-        display: flex;
-        width: 55vw;
-        background-color: var(--background-color);
-    }
-
-    .nav-mobile {
-        display: flex;
-        align-items: center;
-    }
-
-    .nav-full {
-        display: none;
-    }
 }
