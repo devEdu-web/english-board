@@ -101,6 +101,30 @@ h1 {
     margin: 0;
 }
 
+.progress-bar {
+    color: black;
+}
+
+#nouns-bar {
+    background-color: var(--nouns-color);
+}
+
+#adverbs-bar {
+    background-color: var(--adverbs-color);
+}
+
+#verbs-bar {
+    background-color: var(--verbs-color);
+}
+
+#adjvectives-bar {
+    background-color: var(--adjectives-color);
+}
+
+#phrasal-verbs-bar {
+    background-color: var(--phrasal-verbs-color);
+}
+
 @media screen and (max-width: 775px){
 
     .menu {
