@@ -125,6 +125,47 @@ h1 {
     background-color: var(--phrasal-verbs-color);
 }
 
+.subtitle-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+#nouns-dot {
+    background-color: var(--nouns-color);
+}
+
+#adverbs-dot {
+    background-color: var(--adverbs-color);
+}
+
+#verbs-dot {
+    background-color: var(--verbs-color);
+}
+
+#adjectives-dot {
+    background-color: var(--adjectives-color);
+}
+
+#phrasal-verbs-dot {
+    background-color: var(--phrasal-verbs-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 775px){
 
     .menu {
