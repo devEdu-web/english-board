@@ -125,6 +125,14 @@ h1 {
     background-color: var(--phrasal-verbs-color);
 }
 
+#year-bar {
+    background-color: var(--nouns-color);
+}
+
+#hours-bar {
+    background-color: var(--adjectives-color);
+}
+
 .subtitle-dot {
     width: 10px;
     height: 10px;
@@ -152,6 +160,13 @@ h1 {
     background-color: var(--phrasal-verbs-color);
 }
 
+#year-dot {
+    background-color: var(--nouns-color);
+}
+
+#hours-dot {
+    background-color: var(--adjectives-color);
+}
 
 
 
