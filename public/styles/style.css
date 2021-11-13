@@ -14,6 +14,10 @@ body {
     color: white;
 }
 
+.emphasis {
+    color: var(--emphasis-pink);
+}
+
 .menu {
     /* background-color: red; */
     display: flex;
@@ -23,6 +27,16 @@ body {
     min-height: 100vh;
     width: 20vw;
     border-right: 1px solid #5d5d69;
+}
+
+.menu-mobile {
+    display: none;
+    width: 55vw;
+    font-size: 0.8rem;
+    background-color: var(--background-color);
+    /* display: flex; */
+    /* flex-direction: column;
+    align-items: center; */
 }
 
 ul {
@@ -58,6 +72,17 @@ h1 {
 .page-content {
     width: calc(100% - 20vw);
     /* background-color: green; */
+}
+
+.normal-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.activate-menu-mobile {
+    /* display: flex;
+    align-items: center; */
+    display: none;
 }
 
 .user {
@@ -178,18 +203,68 @@ h1 {
 
 
 
-
+@media screen and (max-width: 1050px) {
+    .menu {
+        width: 30vw;
+    }
+}
 
 
 @media screen and (max-width: 775px){
 
     .menu {
         width: 34vw;
+        display: none;
     }
+
+    .normal-menu {
+        display: none;
+    }
+
+    .activate-menu-mobile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .menu-mobile {
+        display: flex;
+    }
+
+    .user {
+        display: none;
+    }
+
+    .user-mobile {
+        display: flex;
+        margin: 16px;
+    }
+
+    .page-content {
+        width: 100%;
+    }
+
+    .row {
+        gap: 10px;
+    }
+
 
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 450px) {
+    .image-list{
+        width: 30px;
+    }
+
+}
+
+@media screen and (max-width: 390px) {
+    .menu-mobile {
+        width: 70vw;
+        font-size: 0.7rem;
+    }
+
+    
 
 }
