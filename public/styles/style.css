@@ -100,7 +100,7 @@ h1 {
 }
 
 .arrow{
-    width: 30%;
+    width: 20%;
 }
 
 .dropdown-menu {
@@ -193,9 +193,24 @@ h1 {
     background-color: var(--adjectives-color);
 }
 
+input[type='text'] {
+    width: 80%;
+    background-color: var(--cards-background);
+    color: white;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.746);
+}
 
-
-
+button {
+    background-color: var(--emphasis-pink);
+    border: none;
+    border-radius: 100px;
+    color: white;
+    font-weight: bolder;
+    padding: 5px 25px;
+}
 
 
 
@@ -248,7 +263,6 @@ h1 {
         gap: 10px;
     }
 
-
 }
 
 
@@ -265,6 +279,9 @@ h1 {
         font-size: 0.7rem;
     }
 
-    
+    input[type="text"] {
+        width: 95%;
+        font-size: 0.8rem;
+    }
 
 }

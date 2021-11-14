@@ -23,8 +23,38 @@
             <main class="d-flex flex-column data-container gap-3">
 
                 
+                <div class="row counters">
+                    <div class="col words-counter d-flex flex-column gap-3">
+                        <div class="words-wrapper d-flex justify-content-between align-items-center">
+                            <h2>Words</h2>
+                            <span class="fs-5 emphasis">9999</span>
+                        </div>
+                        <span>Last Register: <span class="emphasis">Dashboard</span></span>
+                    </div>
 
-                
+
+                    <div class="col hours-counter d-flex flex-column gap-3">
+
+                        <form action="" class="d-flex flex-column align-items-center justify-content-center gap-3">
+                            <input type="text" name="word" id="word" placeholder="Type a word (min 2 letter)">
+                            
+                            <select name="word-class" id="word-class">
+
+                                <option value="noun">Noun</option>
+                                <option value="verb">Verb</option>
+                                <option value="adverb">Adverb</option>
+                                <option value="adjective">Adjective</option>
+                                <option value="phrasal-verb">Phrasal-verb</option>
+
+                            </select>
+
+                            <button type="submit">Add word</button>
+
+                        </form>
+                        
+                    </div>
+                </div>
+
 
 
             </main>
