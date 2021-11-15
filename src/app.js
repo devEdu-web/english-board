@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
-
+import wordsRouter from './router/words.js'
 
 const app = express()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -11,7 +11,8 @@ app.use(express.urlencoded())
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, "..", "views"))
 
-app.use('/', (req, res, next) => {res.render('hours')} )
+app.use('/words', wordsRouter.router)
+app.use('/', (req, res, next) => {res.render('')} )
 
 
 
