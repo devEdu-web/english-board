@@ -11,7 +11,7 @@ app.use(express.urlencoded())
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, "..", "views"))
 
-app.use('/', (req, res, next) => {res.render('words')} )
+app.use('/', (req, res, next) => {res.render('hours')} )
 
 
 

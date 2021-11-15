@@ -193,7 +193,7 @@ h1 {
     background-color: var(--adjectives-color);
 }
 
-input[type='text'] {
+input[type='text'], input[type='number'] {
     width: 80%;
     background-color: var(--cards-background);
     color: white;
