@@ -2,4 +2,8 @@ function getAddWordsPage(req, res, next) {
     res.render('words')
 }
 
-export {getAddWordsPage}
+function getWordsListPage(req, res, next) {
+    res.render('words-list')
+}
+
+export {getAddWordsPage, getWordsListPage}
