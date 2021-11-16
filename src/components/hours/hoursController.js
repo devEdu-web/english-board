@@ -2,4 +2,8 @@ function getAddHourRegisterPage(req, res, next) {
     res.render('hours')
 } 
 
-export {getAddHourRegisterPage}
+function getHoursRegisterPage(req, res, next) {
+    res.render('hours-register')
+}
+
+export {getAddHourRegisterPage, getHoursRegisterPage}
