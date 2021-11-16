@@ -1,13 +1,16 @@
-import server from './src/app.js'
-import dotenv from 'dotenv'
-dotenv.config()
+import server from "./src/app.js";
+import dotenv from "dotenv";
+import { connectingToDatabase } from "./src/config/database.js";
+dotenv.config();
 
-const port = process.env.PORT
+const port = process.env.PORT;
 
-server.app.listen(port, (err => {
-    if(err) {
-        throw err
+await connectingToDatabase();
+
+server.app.listen(port, (err) => {
+    if (err) {
+        throw err;
     } else {
-        console.log(`Conected on port: ${port}`)
+        console.log(`Conected on port: ${port}`);
     }
-}))
+});
