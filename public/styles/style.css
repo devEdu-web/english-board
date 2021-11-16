@@ -16,109 +16,18 @@ body {
 
 main {
     max-height: 80vh;
-    /* border: 1px solid var(--adjectives-color); */
 }
 
 .emphasis {
     color: var(--emphasis-pink);
 }
 
-.menu {
-    /* background-color: red; */
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    min-height: 100vh;
-    width: 20vw;
-    border-right: 1px solid #5d5d69;
-}
-
-.menu-mobile {
-    display: none;
-    width: 55vw;
-    font-size: 0.8rem;
-    background-color: var(--background-color);
-    /* display: flex; */
-    /* flex-direction: column;
-    align-items: center; */
-}
-
-ul {
-    list-style: none;
-}
-
-li {
-    margin-bottom: 24px;
-    
-}
-
-li a {
-    color: #5d5d69;
-    text-decoration: none;
-}
-
-li a:hover {
-    color: var(--emphasis-pink);
-}
-
-h1 {
-    font-size: 1.5em;
-}
-
-.menu-icon{
-    width: 60px;
-}
-
-.image-list {
-    width: 40px;
-}
-
 .page-content {
     width: calc(100% - 20vw);
-    /* background-color: green; */
-}
-
-.normal-menu {
-    display: flex;
-    justify-content: space-between;
-}
-
-.activate-menu-mobile {
-    /* display: flex;
-    align-items: center; */
-    display: none;
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    width: 100px;
-    gap: 5px;
-    cursor: pointer;
-    /* background-color: blue; */
-}
-
-.user-picture {
-    width: 40%;
-    border-radius: 50%;
-}
-
-.arrow{
-    width: 20%;
-}
-
-.dropdown-menu {
-    background-color: #14141f
-}
-.dropdown-item {
-    color: white;
 }
 
 .col {
     background-color: var(--cards-background);
-    /* border: 1px solid white; */
     border-radius: 10px;
     padding: 10px 32px;
     margin: 32px;
@@ -126,78 +35,12 @@ h1 {
 }
 
 .row {
-    /* max-width: 100%; */
-    /* width: 50vw; */
-    /* background-color: green; */
     margin: 0;
 }
 
-.progress-bar {
-    color: black;
-}
 
-#nouns-bar {
-    background-color: var(--nouns-color);
-}
 
-#adverbs-bar {
-    background-color: var(--adverbs-color);
-}
 
-#verbs-bar {
-    background-color: var(--verbs-color);
-}
-
-#adjvectives-bar {
-    background-color: var(--adjectives-color);
-}
-
-#phrasal-verbs-bar {
-    background-color: var(--phrasal-verbs-color);
-}
-
-#year-bar {
-    background-color: var(--nouns-color);
-}
-
-#hours-bar {
-    background-color: var(--adjectives-color);
-}
-
-.subtitle-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: white;
-}
-
-#nouns-dot {
-    background-color: var(--nouns-color);
-}
-
-#adverbs-dot {
-    background-color: var(--adverbs-color);
-}
-
-#verbs-dot {
-    background-color: var(--verbs-color);
-}
-
-#adjectives-dot {
-    background-color: var(--adjectives-color);
-}
-
-#phrasal-verbs-dot {
-    background-color: var(--phrasal-verbs-color);
-}
-
-#year-dot {
-    background-color: var(--nouns-color);
-}
-
-#hours-dot {
-    background-color: var(--adjectives-color);
-}
 
 input[type='text'], input[type='number'] {
     width: 80%;
@@ -219,17 +62,11 @@ button {
 }
 
 
-
-
-
-
-
 @media screen and (max-width: 1050px) {
     .menu {
         width: 30vw;
     }
 }
-
 
 @media screen and (max-width: 775px){
 
