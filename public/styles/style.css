@@ -14,12 +14,18 @@ body {
     color: white;
 }
 
+main {
+    max-height: 80vh;
+    /* border: 1px solid var(--adjectives-color); */
+}
+
 .emphasis {
     color: var(--emphasis-pink);
 }
 
 .menu {
     /* background-color: red; */
+    position: sticky;
     display: flex;
     flex-direction: column;
     align-items: center;
