@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import wordsRouter from "./router/words.js";
 import hoursRouter from "./router/hours.js";
 
+
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
