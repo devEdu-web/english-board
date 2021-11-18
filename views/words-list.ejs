@@ -16,15 +16,23 @@
             <%- include('./includes/nav-header') %> 
             <main class="data-container gap-3 p-3 m-3 overflow-scroll">
                 <table class="justify-content-center table table-sm text-light">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Word</th>
+                            <th>Word class</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>testeeeeeeeeeee</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>teste</td>
-                        </tr>
+
+                        <% for(let i=0; i < allWords.length; i++) { %>
+                            <tr>
+                                <th><%=i+1%> </th>
+                                <td><%= allWords[i].wordName %></td>
+                                <td><%= allWords[i].wordClass %></td>
+                            </tr>
+                         <% } %>
+                        
                     </tbody>
                 </table>
             </main>

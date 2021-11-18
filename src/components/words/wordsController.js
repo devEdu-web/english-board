@@ -5,16 +5,24 @@ function getAddWordsPage(req, res, next) {
 }
 
 function getWordsListPage(req, res, next) {
-    res.render("words-list");
+    const allWords = wordModel.Word.getAllWords()
+    allWords.toArray()
+    .then(words => {
+        res.render("words-list", {allWords: words});
+    })
+    .catch(err => console.log(err))
 }
 
 function getWordsInfo(req, res, next) {
     const wordInfo = req.body
     const word = wordInfo.word
-    const wordClass = wordInfo['word-class']
+    const wordClass = wordInfo.wordClass
     const newWord = new wordModel.Word(word, wordClass);
+    console.log(wordInfo)
     newWord.save()
-    .then((result) => console.log(result))
+    .then((result) => {
+        res.redirect('/words/words-list')
+    })
     .catch((err) => console.log(err));
 }
 

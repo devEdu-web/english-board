@@ -6,14 +6,17 @@ class Word {
         this.wordName = wordName, 
         this.wordClass = wordClass,
         this.save = () => {
-            const teste = getDb()
-            return teste.collection("words-list").insertOne(this);  
+            const db = getDb()
+            return db.collection("words-list").insertOne(this);  
         }
     }
 
-    static save() {
-        const db = database.getDb(); // here returns the database
-        return db.collection("words-list").insertOne({ teste: "nada" });
+    static getAllWords() {
+        const db = getDb()
+
+        return db.collection("words-list").find()
+
+
     }
 }
 
