@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import wordsRouter from "./router/words.js";
 import hoursRouter from "./router/hours.js";
+import dashboardRouter from './router/dashboard.js'
 
 
 const app = express();
@@ -15,8 +16,6 @@ app.set("views", path.join(__dirname, "..", "views"));
 
 app.use("/words", wordsRouter.router);
 app.use("/hours", hoursRouter.router);
-app.use("/", (req, res, next) => {
-    res.render("");
-});
+app.use("/", dashboardRouter.router);
 
 export default { app };
