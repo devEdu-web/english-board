@@ -8,6 +8,7 @@ function getWordsListPage(req, res, next) {
     const allWords = wordModel.Word.getAllWords()
     allWords.toArray()
     .then(words => {
+        console.log(words)
         res.render("words-list", {allWords: words});
     })
     .catch(err => console.log(err))
