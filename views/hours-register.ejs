@@ -24,16 +24,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>22 apr 2020</td>
-                            <td>1h</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>32 apr 2020</td>
-                            <td>1h</td>
-                        </tr>
+                        <% for(let i = 0; i < allHours[0].hoursInfo.length; i++) { %> 
+
+                            <tr>
+                                <th><%= i + 1 %></th>
+                                <td><%= Object.keys(allHours[0].hoursInfo[i])%> </td>
+                                <td><%= Object.values(allHours[0].hoursInfo[i])%> </td>
+                            </tr>
+
+                        <% } %> 
                     </tbody>
                 </table>
             </main>

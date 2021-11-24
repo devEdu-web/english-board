@@ -5,7 +5,14 @@ function getAddHourRegisterPage(req, res, next) {
 } 
 
 function getHoursRegisterPage(req, res, next) {
-    res.render('hours-register')
+    const hours = hourModel.Hour.getAllHourInfo()
+    hours.toArray()
+    .then(hours => {
+        console.log(hours)
+        res.render('hours-register', {allHours: hours})
+    })
+    .catch(hours)
+
 }
 
 function postHour(req, res, next) {

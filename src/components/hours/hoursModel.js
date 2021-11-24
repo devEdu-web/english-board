@@ -16,6 +16,12 @@ class Hour {
         }
     }
 
+    static getAllHourInfo() {
+
+        return db.collection('hours').find()
+
+    }
+
 }
 
 export default {Hour}
