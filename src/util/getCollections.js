@@ -3,7 +3,6 @@ import * as wordModel from '../components/words/wordsModel.js'
 import * as hourModel from '../components/hours/hoursModel.js'
 
 async function getAllCollections () {
-
     const words = await wordModel.default.Word.getAllWords().toArray()
     const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
 
@@ -11,7 +10,7 @@ async function getAllCollections () {
         wordsCollection: words,
         hoursCollection: hours
     }
-
 }
+// Tu ta passando as horas num objeto tambem, agora arruma o dashboard
 
 export {getAllCollections}

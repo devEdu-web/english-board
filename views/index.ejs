@@ -29,9 +29,9 @@
                     <div class="col hours-counter d-flex flex-column gap-3">
                         <div class="words-wrapper d-flex justify-content-between align-items-center">
                             <h2>Hours</h2>
-                            <span class="fs-5 emphasis">9999</span>
+                            <span class="fs-5 emphasis"><%= collections.hoursCollection[0].hoursCounter %></span>
                         </div>
-                        <span>Last Register: <span class="emphasis">Dashboard</span></span>
+                        <span>Last Register: <span class="emphasis"><%= Object.keys(collections.hoursCollection[0].hoursInfo[collections.hoursCollection[0].hoursInfo.length - 1]) %> </span></span>
                     </div>
                 </div>
 
