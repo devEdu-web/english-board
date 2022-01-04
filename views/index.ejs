@@ -39,37 +39,37 @@
                     <div class="col words-information d-flex flex-column gap-3">
                         <h1>Words information</h1>
                         <div class="progress">
-                            <div id="nouns-bar" class="progress-bar" role="progressbar" style="width: 20%;">20%</div>
-                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: 20%;">20%</div>
-                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: 20%;">20%</div>
-                            <div id="adjectives-bar" class="progress-bar" role="progressbar" style="width: 20%;">20%</div>
-                            <div id="phrasal-verbs-bar" class="progress-bar" role="progressbar" style="width: 20%;">20%</div>
+                            <div id="nouns-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[0].percentage%>%"><%= collections.wordsInfo[0].percentage%>%</div>
+                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[1].percentage%>%;"><%= collections.wordsInfo[1].percentage%>%</div>
+                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[2].percentage%>%;"><%= collections.wordsInfo[2].percentage%>%</div>
+                            <div id="adjectives-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[3].percentage%>%;"><%= collections.wordsInfo[3].percentage%>%</div>
+                            <div id="phrasal-verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[4].percentage%>%;"><%= collections.wordsInfo[4].percentage%>%</div>
                         </div>
 
                         <div class="words-subtitle d-flex flex-wrap gap-4">
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="nouns-dot"></div>
-                                <span>Nouns: 400</span>
+                                <span>Nouns: <%= collections.wordsInfo[0].quantity%></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="adverbs-dot"></div>
-                                <span>Adverbs: 400</span>
+                                <span>Adverbs: <%= collections.wordsInfo[1].quantity%></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="verbs-dot"></div>
-                                <span>Verbs: 400</span>
+                                <span>Verbs: <%= collections.wordsInfo[2].quantity%></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="adjectives-dot"></div>
-                                <span>Adjectives: 400</span>
+                                <span>Adjectives: <%= collections.wordsInfo[3].quantity%></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="phrasal-verbs-dot"></div>
-                                <span>Phrasal Verbs: 400</span>
+                                <span>Phrasal Verbs: <%= collections.wordsInfo[4].quantity%></span>
                             </div>
                         </div>
                     </div>
