@@ -1,46 +1,22 @@
 import * as wordModel from '../components/words/wordsModel.js'
 import * as hourModel from '../components/hours/hoursModel.js'
-
+// menor * 100 / maior
 async function getClassesPercentage() {
     const words = await wordModel.default.Word.getAllWords().toArray()
     const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
-
-    let nouns = {
+    const wordsAttributes = {
         quantity: 0,
         get percentage(){
             return (this.quantity * 100) / words.length
         }
     }
 
-    let verbs = {
-        quantity: 0,
-        get percentage(){
-            return (this.quantity * 100) / words.length
-        }
-    }
+    let nouns = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
+    let verbs = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
+    let adverbs = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
+    let adjectives = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
+    let phrasalVerbs = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
 
-    let adverbs = {
-        quantity: 0,
-        get percentage(){
-            return (this.quantity * 100) / words.length
-        }
-    }
-
-    let adjectives = {
-        quantity: 0,
-        get percentage(){
-            return (this.quantity * 100) / words.length
-        }
-    }
-
-    let phrasalVerbs = {
-        quantity: 0,
-        get percentage(){
-            return (this.quantity * 100) / words.length
-        }
-    }
-    
-    //percentage = menor x100 / maior
 
     words.forEach(word => {
         switch(word.wordClass) {
@@ -62,10 +38,7 @@ async function getClassesPercentage() {
         }
     })
 
-    return [
-        nouns, verbs, adverbs, adjectives, phrasalVerbs
-    
-    ]
+    return [ nouns, verbs, adverbs, adjectives, phrasalVerbs ]
     
 
 }

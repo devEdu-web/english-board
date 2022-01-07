@@ -40,8 +40,8 @@
                         <h1>Words information</h1>
                         <div class="progress">
                             <div id="nouns-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[0].percentage%>%"><%= collections.wordsInfo[0].percentage%>%</div>
-                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[1].percentage%>%;"><%= collections.wordsInfo[1].percentage%>%</div>
-                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[2].percentage%>%;"><%= collections.wordsInfo[2].percentage%>%</div>
+                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[1].percentage%>%;"><%= collections.wordsInfo[2].percentage%>%</div>
+                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[2].percentage%>%;"><%= collections.wordsInfo[1].percentage%>%</div>
                             <div id="adjectives-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[3].percentage%>%;"><%= collections.wordsInfo[3].percentage%>%</div>
                             <div id="phrasal-verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[4].percentage%>%;"><%= collections.wordsInfo[4].percentage%>%</div>
                         </div>
@@ -53,13 +53,13 @@
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
-                                <div class="subtitle-dot" id="adverbs-dot"></div>
-                                <span>Adverbs: <%= collections.wordsInfo[1].quantity%></span>
+                                <div class="subtitle-dot" id="verbs-dot"></div>
+                                <span>Verbs: <%= collections.wordsInfo[1].quantity%></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
-                                <div class="subtitle-dot" id="verbs-dot"></div>
-                                <span>Verbs: <%= collections.wordsInfo[2].quantity%></span>
+                                <div class="subtitle-dot" id="adverbs-dot"></div>
+                                <span>Adverbs: <%= collections.wordsInfo[2].quantity%></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
@@ -84,12 +84,12 @@
                         <div class="hours-subtitle d-flex flex-wrap gap-4">
                             <div class="hours-subtitle-item d-flex align-items-center gap-1">
                                 <div class="subtitle-dot" id="year-dot"></div>
-                                <span>Years of the year</span>
+                                <span>Days of the year</span>
                             </div>
 
                             <div class="hours-subtitle-item d-flex align-items-center gap-1">
                                 <div class="subtitle-dot" id="hours-dot"></div>
-                                <span>Hours of the listening</span>
+                                <span>Days listening</span>
                             </div>
                         </div>
 
