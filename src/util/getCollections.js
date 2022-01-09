@@ -7,12 +7,14 @@ async function getAllCollections () {
     const words = await wordModel.default.Word.getAllWords().toArray()
     const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
     const wordsInfo = await getPercentage.getClassesPercentage()
+    const hoursInfo = await getPercentage.getHoursPercentage()
     // console.log(words.length)
 
     return {
         wordsCollection: words,
         hoursCollection: hours,
-        wordsInfo: wordsInfo
+        wordsInfo: wordsInfo,
+        hoursInfo: hoursInfo
     }
 }
 // Tu ta passando as horas num objeto tambem, agora arruma o dashboard

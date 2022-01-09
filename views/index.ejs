@@ -40,8 +40,8 @@
                         <h1>Words information</h1>
                         <div class="progress">
                             <div id="nouns-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[0].percentage%>%"><%= collections.wordsInfo[0].percentage%>%</div>
-                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[1].percentage%>%;"><%= collections.wordsInfo[2].percentage%>%</div>
-                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[2].percentage%>%;"><%= collections.wordsInfo[1].percentage%>%</div>
+                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[1].percentage%>%;"><%= collections.wordsInfo[1].percentage%>%</div>
+                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[2].percentage%>%;"><%= collections.wordsInfo[2].percentage%>%</div>
                             <div id="adjectives-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[3].percentage%>%;"><%= collections.wordsInfo[3].percentage%>%</div>
                             <div id="phrasal-verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsInfo[4].percentage%>%;"><%= collections.wordsInfo[4].percentage%>%</div>
                         </div>
@@ -77,8 +77,8 @@
                     <div class="col hours-information  d-flex flex-column gap-3">
                         <h1>Hours information</h1>
                         <div class="progress">
-                            <div id="year-bar" class="progress-bar" role="progressbar" style="width: 50%;">50%</div>
-                            <div id="hours-bar" class="progress-bar" role="progressbar" style="width: 50%;">50%</div>
+                            <div id="year-bar" class="progress-bar" role="progressbar" style="width: <%= collections.hoursInfo.hoursPercentage.daysPercentage %>%;"><%= collections.hoursInfo.hoursPercentage.daysPercentage %>%</div>
+                            <div id="hours-bar" class="progress-bar" role="progressbar" style="width: <%= collections.hoursInfo.hoursPercentage.listeningPercentage %>%;"><%= collections.hoursInfo.hoursPercentage.listenigPercentage %>%</div>
                         </div>
 
                         <div class="hours-subtitle d-flex flex-wrap gap-4">

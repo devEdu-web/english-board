@@ -3,7 +3,6 @@ import * as hourModel from '../components/hours/hoursModel.js'
 // menor * 100 / maior
 async function getClassesPercentage() {
     const words = await wordModel.default.Word.getAllWords().toArray()
-    const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
     const wordsAttributes = {
         quantity: 0,
         get percentage(){
@@ -43,4 +42,25 @@ async function getClassesPercentage() {
 
 }
 
-export {getClassesPercentage}
+async function getHoursPercentage(){
+    const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
+    let hoursPercentage = {
+        listeningDays: hours[0].hoursInfo.length,
+        get listenigPercentage() {
+            return Math.ceil(this.listeningDays * 100 / 365)
+        },
+        get daysPercentage() {
+            return 100 - this.listenigPercentage
+        }
+    }
+
+    // hours.forEach(item => {
+    //     hoursPercentage.listeningDays = item.hoursInfo.length
+    // })
+
+    return {
+        hoursPercentage
+    }
+}
+
+export {getClassesPercentage, getHoursPercentage}
