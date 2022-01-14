@@ -44,23 +44,29 @@ async function getClassesPercentage() {
 
 async function getHoursPercentage(){
     const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
-    let hoursPercentage = {
-        listeningDays: hours[0].hoursInfo.length,
-        get listenigPercentage() {
-            return Math.ceil(this.listeningDays * 100 / 365)
-        },
-        get daysPercentage() {
-            return 100 - this.listenigPercentage
+    if(hours.length > 0) {
+
+        let hoursPercentage = {
+            listeningDays: hours[0].hoursInfo.length,
+            get listenigPercentage() {
+                return Math.ceil(this.listeningDays * 100 / 365)
+            },
+            get daysPercentage() {
+                return 100 - this.listenigPercentage
+            }
         }
+        return {
+            hoursPercentage
+        }
+    } else {
+        return []
     }
+
 
     // hours.forEach(item => {
     //     hoursPercentage.listeningDays = item.hoursInfo.length
     // })
 
-    return {
-        hoursPercentage
-    }
 }
 
 export {getClassesPercentage, getHoursPercentage}
