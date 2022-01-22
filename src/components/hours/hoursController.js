@@ -33,4 +33,4 @@ function postHour(req, res, next) {
 
 }
 
-export {getAddHourRegisterPage, getHoursRegisterPage, postHour}
+export {getAddHourRegisterPage, getHoursRegisterPage, postHour};
