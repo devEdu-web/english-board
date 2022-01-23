@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    max-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E1E2E;
+    color: white;
+}
+
+div {
+    position: absolute;
+    top: 0;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div span {
+    font-weight: 100;
+}
+
+form {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 2rem; */
+    width: 35vw;
+    /* background-color: red; */
+}
+
+form span {
+    font-size: 0.8rem;
+}
+
+input[type='text'], input[type='password'] {
+    width: 85%;
+    background-color: #1E1E2E;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid white;
+    /* padding: 5px; */
+    padding-left: 20px;
+    color: white;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+input[type='submit'] {
+    background-color: #D90368;
+    width: 40%;
+    border: none;
+    outline: none;
+    border-radius: 2000px;
+    padding: 5px 30px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: #9E0D0D;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 850px) {
+    form {
+        margin-top: 0;
+        width: 45vw;
+    }
+
+    input[type='text'], input[type='password'] {
+        width: 100%;
+    }
+
+    input[type='submit'] {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    form {
+        width: 70vw;
+    }
+}

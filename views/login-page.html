@@ -9,6 +9,22 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login page</h1>
+    <main class="w-100 h-100">
+
+        <div>
+            <h1>Welcome to EnglishBoard</h1>
+            <span>Sign in to continue.</span>
+        </div>
+
+        <form action="/user/login" method="post">
+
+            <input type="text" name="email" id="name" placeholder="Email">
+            <input type="password" name="password" id="email" placeholder="Password">
+            <input type="submit" value="Log in">
+
+            <span>Doesn't have an account? <a href="/register">Register</a></span>
+
+        </form>
+
 </body>
 </html>
