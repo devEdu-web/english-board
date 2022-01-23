@@ -12,7 +12,7 @@ function getDashboardPage(req, res, next) {
 
     getAllCollections()
     .then(collections => {
-        console.log(collections)
+        // console.log(collections)
         res.render('index', {collections})
     })
     .catch(err => console.log(err))

@@ -8,12 +8,14 @@ class Hour {
         this.getInfo = () => {return db.collection('hours').find().toArray()}
         this.save = async () => {
             const hours = await this.getInfo()
+            const hoursId = ObjectId(hours[0]._id).toString()
+            console.log(hoursId)
             if(hours.length > 0) {
                 return db.collection("hours").updateOne(
-                    {_id: ObjectId("619e64870c0b50cf202c271f")},
+                    {_id: ObjectId(hoursId)},
                     {
                         $inc: {hoursCounter: Number(this.hoursCounter)},
-                        $push: {hoursInfo: this.hourInfo}
+                        $push: {hoursInfo: this.hoursInfo}
                     }
                 )
             } else {
