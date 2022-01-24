@@ -9,7 +9,6 @@ class Hour {
         this.save = async () => {
             const hours = await this.getInfo()
             const hoursId = ObjectId(hours[0]._id).toString()
-            console.log(hoursId)
             if(hours.length > 0) {
                 return db.collection("hours").updateOne(
                     {_id: ObjectId(hoursId)},
@@ -22,7 +21,6 @@ class Hour {
                 return db.collection('hours').insertOne({hoursCounter: this.hoursCounter, hoursInfo: [this.hoursInfo]})
             }
 
-            // Falta voce tratar do caso de não ter horas no dashboard
 
         }
     }
