@@ -5,6 +5,7 @@ import wordsRouter from "./router/words.js";
 import hoursRouter from "./router/hours.js";
 import dashboardRouter from './router/dashboard.js'
 import userRoutes from "./router/userRoutes.js";
+import cors from 'cors'
 
 
 const app = express();

@@ -6,7 +6,8 @@ async function postRegister(event) {
     const options = {
         method: form.method,
         body: new URLSearchParams(userData),
-        redirect: 'follow'
+        redirect: 'follow',
+
     }
 
     
@@ -14,11 +15,13 @@ async function postRegister(event) {
     try {
 
         const response = await fetch(form.action, options)
+        console.log(response)
         const json = await response.json()
         console.log(JSON.stringify(json))
 
     } catch(e) {
         console.log(e)
     }
+
 
 }

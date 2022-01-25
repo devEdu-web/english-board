@@ -8,7 +8,7 @@ router.get('/login', userController.getLoginPage)
 router.get('/register', userController.getRegisterPage)
 
 router.post('/login', userController.logUser)
-router.post('/register', validation.error, userController.registerUser)
+router.post('/register', validation.dataValidation, userController.registerUser)
 
 
 export default {router}
