@@ -11,7 +11,7 @@ class User {
         return db.collection('users').insertOne(this)
     }
 
-    static findUsers(email) {
+    static findUserByEmail(email) {
         return db.collection('users').findOne({email})
     }
 

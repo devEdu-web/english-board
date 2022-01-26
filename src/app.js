@@ -1,11 +1,12 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from 'cors'
+import cookieParser from "cookie-parser";
 import wordsRouter from "./router/words.js";
 import hoursRouter from "./router/hours.js";
 import dashboardRouter from './router/dashboard.js'
 import userRoutes from "./router/userRoutes.js";
-import cors from 'cors'
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "views"));
 
+app.use(cookieParser())
 app.use("/words", wordsRouter.router);
 app.use("/hours", hoursRouter.router);
 app.use("/", dashboardRouter.router);

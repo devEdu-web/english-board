@@ -1,4 +1,4 @@
-function dataValidation(req, res, next) {
+function registerValidation(req, res, next) {
     const errors = []
     const {name, email, password, confirmPassword} = req.body
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
@@ -28,4 +28,22 @@ function dataValidation(req, res, next) {
 
 }
 
-export {dataValidation}
+function loginValidation(req, res, next) {
+    const errors = []
+    const {email, password} = req.body
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+
+    if(!email.toString().match(regex)) {
+        errors.push({field: 'email', message: 'Email invalid'})
+    }
+
+    if(password.length < 6) {
+        errors.push({field: 'password', message: 'Password must have 6 characteres'})
+    }
+
+    if(errors.length <= 0) return next()
+
+    res.send(errors)
+}
+
+export {registerValidation, loginValidation}
