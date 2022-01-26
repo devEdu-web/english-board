@@ -1,12 +1,13 @@
 function dataValidation(req, res, next) {
     const errors = []
     const {name, email, password, confirmPassword} = req.body
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 
     if(name.length < 3) {
         errors.push({field: 'name', message: 'Name must have 3 characteres'})
     }
 
-    if(email.toLowerCase().match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i)) {
+    if(!email.toString().match(regex)) {
         errors.push({field: 'email', message: 'Email invalid'})
     }
 
@@ -18,9 +19,10 @@ function dataValidation(req, res, next) {
         errors.push({field: 'confirmPassword', message: 'Passwords dont match'})
     }
 
+
     if(errors.length <= 0) return next()
 
-    console.log(errors)
+    // TODO: Treat and send properly the errors to the user and improve this validation code
 
     res.send(errors)
 
