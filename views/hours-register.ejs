@@ -24,12 +24,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(let i = 0; i < allHours[0].hoursInfo.length; i++) { %> 
+                        <% for(let i = 0; i < userProgress.hours.hoursInfo.length; i++) { %> 
 
                             <tr>
                                 <th><%= i + 1 %></th>
-                                <td><%= Object.keys(allHours[0].hoursInfo[i])%> </td>
-                                <td><%= Object.values(allHours[0].hoursInfo[i])%> </td>
+                                <td><%= Object.keys(userProgress.hours.hoursInfo[i])%> </td>
+                                <td><%= Object.values(userProgress.hours.hoursInfo[i])%> </td>
                             </tr>
 
                         <% } %> 

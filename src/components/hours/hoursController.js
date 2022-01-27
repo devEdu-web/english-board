@@ -6,14 +6,24 @@ function getAddHourRegisterPage(req, res, next) {
     res.render('hours')
 } 
 
-function getHoursRegisterPage(req, res, next) {
-    const hours = hourModel.Hour.getAllHourInfo()
-    hours.toArray()
-    .then(hours => {
-        // console.log(hours)
-        res.render('hours-register', {allHours: hours})
-    })
-    .catch(hours)
+async function getHoursRegisterPage(req, res, next) {
+
+    try {
+        const userId = req.cookies.userId
+        const userProgress = await UserProgress.getUserProgress(userId)
+
+        res.render('hours-register', {userProgress})
+
+    } catch(e) {
+        res.send(e)
+    }
+    
+    // hours.toArray()
+    // .then(hours => {
+    //     // console.log(hours)
+    //     res.render('hours-register', {allHours: hours})
+    // })
+    // .catch(hours)
 
 }
 
