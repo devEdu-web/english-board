@@ -5,14 +5,27 @@ function getAddWordsPage(req, res, next) {
     res.render("words");
 }
 
-function getWordsListPage(req, res, next) {
-    const allWords = wordModel.Word.getAllWords()
-    allWords.toArray()
-    .then(words => {
-        console.log(words)
-        res.render("words-list", {allWords: words});
-    })
-    .catch(err => console.log(err))
+async function getWordsListPage(req, res, next) {
+
+    try {
+        const userId = req.cookies.userId
+        const userProgress = await UserProgress.getUserProgress(userId)
+    
+        res.render('words-list', {userProgress})
+
+    } catch(e) {
+        res.send(e)
+    }
+
+
+
+    // const allWords = wordModel.Word.getAllWords()
+    // allWords.toArray()
+    // .then(words => {
+    //     console.log(words)
+    //     res.render("words-list", {allWords: words});
+    // })
+    // .catch(err => console.log(err))
 }
 
 async function getWordsInfo(req, res, next) {

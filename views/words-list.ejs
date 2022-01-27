@@ -25,11 +25,11 @@
                     </thead>
                     <tbody>
 
-                        <% for(let i=0; i < allWords.length; i++) { %>
+                        <% for(let i=0; i < userProgress.words.userWords.length; i++) { %>
                             <tr>
                                 <th><%=i+1%> </th>
-                                <td><%= allWords[i].wordName %></td>
-                                <td><%= allWords[i].wordClass %></td>
+                                <td><%= userProgress.words.userWords[i].wordName %></td>
+                                <td><%= userProgress.words.userWords[i].wordClass %></td>
                             </tr>
                          <% } %>
                         

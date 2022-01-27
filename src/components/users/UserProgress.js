@@ -34,7 +34,7 @@ class UserProgress {
     }
 
     static getUserProgress(userId) {
-
+        return db.collection('userProgress').findOne({userId: new ObjectId(userId)})
     }
 }
 
