@@ -11,7 +11,6 @@ function validateToken(token, userData) {
 
 function authentication(req, res, next) {
     const userToken = req.cookies.tk
-    console.log(userToken)
     if(!userToken) return res.redirect('/login')
 
     try {
