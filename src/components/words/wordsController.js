@@ -1,4 +1,5 @@
 import wordModel from "./wordsModel.js";
+import {UserProgress} from '../users/UserProgress.js'
 
 function getAddWordsPage(req, res, next) {
     res.render("words");
@@ -14,17 +15,22 @@ function getWordsListPage(req, res, next) {
     .catch(err => console.log(err))
 }
 
-function getWordsInfo(req, res, next) {
-    const wordInfo = req.body
-    const word = wordInfo.word
-    const wordClass = wordInfo.wordClass
-    const newWord = new wordModel.Word(word, wordClass);
-    console.log(wordInfo)
-    newWord.save()
-    .then((result) => {
+async function getWordsInfo(req, res, next) {
+
+    try {
+        const userId = req.cookies.userId
+        const wordInfo = req.body
+        const word = wordInfo.word
+        const wordClass = wordInfo.wordClass
+    
+        await UserProgress.updateWordsInfo(userId, word, wordClass)
+    
         res.redirect('/words/words-list')
-    })
-    .catch((err) => console.log(err));
+
+    } catch(e) {
+        res.send(e)
+    }
+
 }
 
 export { getAddWordsPage, getWordsListPage, getWordsInfo };

@@ -21,7 +21,17 @@ class UserProgress {
         )
     }
 
-    static updateWordsInfo(userId) {}
+    static updateWordsInfo(userId, word, wordClass) {
+
+        return db.collection('userProgress').updateOne(
+            {userId: new ObjectId(userId)},
+            {
+                $inc: {"words.wordsCounter": 1},
+                $push: {"words.userWords": {wordName: word, wordClass}}
+            }
+        )
+
+    }
 
     static getUserProgress(userId) {
 

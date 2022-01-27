@@ -18,24 +18,20 @@ function getHoursRegisterPage(req, res, next) {
 }
 
 async function postHour(req, res, next) {
-    const userId = req.cookies.userId
-    const hourCounter = Number(req.body.hourCounter)
-    const hourInfo = req.body.hourInfo
-    const hours = hourModel.Hour.getAllHourInfo()
 
-    await UserProgress.updateHoursInfo(userId, hourCounter, hourInfo)
-
-    console.log('done')
-
-    // const hour = new hourModel.Hour(hourCounter, {[hourInfo]: hourCounter})
-    // console.log(hour)
-    // hour.save()
-    // .then(result => {
-    //     // console.log(result)
-    //     res.redirect('/hours/hours-register')
-    // })
-    // .catch(err => console.log(err))
+    try {   
+        const userId = req.cookies.userId
+        const hourCounter = Number(req.body.hourCounter)
+        const hourInfo = req.body.hourInfo
+        const hours = hourModel.Hour.getAllHourInfo()
     
+        await UserProgress.updateHoursInfo(userId, hourCounter, hourInfo)
+    
+        res.redirect('/hours/hours-register')
+
+    } catch(e) {
+        res.send(e)
+    }    
 
 }
 
