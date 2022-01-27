@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import {User} from './User.js'
+import { UserProgress } from './UserProgress.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
@@ -15,17 +16,37 @@ function getRegisterPage(req, res, next) {
 }
 
 async function registerUser(req, res, next) {
-    const {name, email, password} = req.body
-    const repeatedUser = await User.findUser(email)
-    const userPasswordEncrypted = await bcrypt.hash(password, 10)
 
-    if(repeatedUser) return res.status(401).json({satusCode: 401, message: 'Email already exists'})
+    try {
 
-    const user = new User(name, email, userPasswordEncrypted)
+        const {name, email, password} = req.body
+        const repeatedUser = await User.findUserByEmail(email)
+        const userPasswordEncrypted = await bcrypt.hash(password, 10)
+    
+        if(repeatedUser) return res.status(401).json({satusCode: 401, message: 'Email already exists'})
+    
+        const user = new User(name, email, userPasswordEncrypted)
+        const userProgress = new UserProgress(user._id, {wordsCounter: 0, userWords: []}, {hoursCounter: 0, hoursInfo: []})
+    
+        await user.save()
+        await userProgress.save()
 
-    user.save()
-    .then(result => res.send('user saved'))
-    .catch(e => res.send(e))
+        res.send('User and progress saved')
+
+        console.log(user)
+        console.log(userProgress)
+
+    } catch(err) {
+        res.send(err)
+    }
+
+
+
+    
+
+    // user.save()
+    // .then(result => res.send('user saved'))
+    // .catch(e => res.send(e))
 
 
 }
