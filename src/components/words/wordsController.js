@@ -1,9 +1,11 @@
 import wordModel from "./wordsModel.js";
 import {UserProgress} from '../users/UserProgress.js'
 
-function getAddWordsPage(req, res, next) {
+async function getAddWordsPage(req, res, next) {
+    const userId = req.cookies.userId
     const userName = req.cookies.userName
-    res.render("words", {userName});
+    const userProgress = await UserProgress.getUserProgress(userId)
+    res.render("words", {userName, userProgress});
 }
 
 async function getWordsListPage(req, res, next) {

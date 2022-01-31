@@ -20,9 +20,9 @@
                     <div class="col words-counter d-flex flex-column gap-3">
                         <div class="words-wrapper d-flex justify-content-between align-items-center">
                             <h2>Hours</h2>
-                            <span class="fs-5 emphasis">9999</span>
+                            <span class="fs-5 emphasis"> <%= userProgress.hours.hoursCounter %>  </span>
                         </div>
-                        <span>Last Register: <span class="emphasis">Dashboard</span></span>
+                        <span>Last Register: <span class="emphasis"><%= userProgress.hours.hoursCounter > 0 ? Object.keys(userProgress.hours.hoursInfo[userProgress.hours.hoursInfo.length - 1]) : 'No registers' %></span></span>
                     </div>
 
                     <div class="col hours-counter d-flex flex-column gap-3">

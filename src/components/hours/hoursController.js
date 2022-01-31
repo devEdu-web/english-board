@@ -2,9 +2,11 @@ import hoursModel from './hoursModel.js'
 import hourModel from './hoursModel.js'
 import {UserProgress} from '../users/UserProgress.js'
 
-function getAddHourRegisterPage(req, res, next) {
+async function getAddHourRegisterPage(req, res, next) {
+    const userId = req.cookies.userId
+    const userProgress = await UserProgress.getUserProgress(userId)
     const userName = req.cookies.userName
-    res.render('hours', {userName})
+    res.render('hours', {userName, userProgress})
 } 
 
 async function getHoursRegisterPage(req, res, next) {
