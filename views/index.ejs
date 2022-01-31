@@ -21,17 +21,17 @@
                     <div class="col words-counter d-flex flex-column gap-3">
                         <div class="words-wrapper d-flex justify-content-between align-items-center">
                             <h2>Words</h2>
-                            <span class="fs-5 emphasis"><%= collections.wordsCollection.length > 0 ? collections.wordsCollection.length : '0' %> </span>
+                            <span class="fs-5 emphasis"><%= userProgress.words.wordsCounter %> </span>
                         </div>
-                        <span>Last Register: <span class="emphasis"><%= collections.wordsCollection.length > 0 ? collections.wordsCollection[collections.wordsCollection.length - 1].wordName : 'No registers'  %> </span></span>
+                        <span>Last Register: <span class="emphasis"><%= userProgress.words.wordsCounter > 0 ? userProgress.words.userWords[userProgress.words.userWords.length - 1].wordName : 'No registers'  %> </span></span>
                     </div>
 
                     <div class="col hours-counter d-flex flex-column gap-3">
                         <div class="words-wrapper d-flex justify-content-between align-items-center">
                             <h2>Hours</h2>
-                            <span class="fs-5 emphasis"><%= collections.hoursCollection.length > 0 ? collections.hoursCollection[0].hoursCounter : '0' %></span>
+                            <span class="fs-5 emphasis"><%= userProgress.hours.hoursCounter %></span>
                         </div>
-                        <span>Last Register: <span class="emphasis"><%= collections.hoursCollection.length > 0 ? Object.keys(collections.hoursCollection[0].hoursInfo[collections.hoursCollection[0].hoursInfo.length - 1]) : 'No registers' %> </span></span>
+                        <span>Last Register: <span class="emphasis"><%= userProgress.hours.hoursCounter > 0 ? Object.keys(userProgress.hours.hoursInfo[userProgress.hours.hoursInfo.length - 1]) : 'No registers' %> </span></span>
                     </div>
                 </div>
 
@@ -39,37 +39,37 @@
                     <div class="col words-information d-flex flex-column gap-3">
                         <h1>Words information</h1>
                         <div class="progress">
-                            <div id="nouns-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsCollection.length > 0 ? collections.wordsInfo[0].percentage : '0'%>%"><%= collections.wordsCollection.length > 0 ? collections.wordsInfo[0].percentage : '0'%>%</div>
-                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsCollection.length > 0 ? collections.wordsInfo[1].percentage : '0'%>%;"><%= collections.wordsCollection.length > 0 ? collections.wordsInfo[1].percentage : '0'%>%</div>
-                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsCollection.length > 0 ? collections.wordsInfo[2].percentage : '0'%>%;"><%= collections.wordsCollection.length > 0 ? collections.wordsInfo[2].percentage : '0'%>%</div>
-                            <div id="adjectives-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsCollection.length > 0 ? collections.wordsInfo[3].percentage : '0'%>%;"><%= collections.wordsCollection.length > 0 ? collections.wordsInfo[3].percentage : '0'%>%</div>
-                            <div id="phrasal-verbs-bar" class="progress-bar" role="progressbar" style="width: <%= collections.wordsCollection.length > 0 ? collections.wordsInfo[4].percentage : '0'%>%;"><%= collections.wordsCollection.length > 0 ? collections.wordsInfo[4].percentage : '0'%>%</div>
+                            <div id="nouns-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.words.wordsCounter > 0 ? words.nouns.percentage : '0'%>%"><%= userProgress.words.wordsCounter > 0 ? words.nouns.percentage : '0'%>%</div>
+                            <div id="verbs-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.words.wordsCounter > 0 ? words.verbs.percentage : '0'%>%;"><%= userProgress.words.wordsCounter > 0 ? words.verbs.percentage : '0'%>%</div>
+                            <div id="adverbs-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.words.wordsCounter > 0 ? words.adverbs.percentage : '0'%>%;"><%= userProgress.words.wordsCounter > 0 ? words.adverbs.percentage : '0'%>%</div>
+                            <div id="adjectives-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.words.wordsCounter > 0 ? words.adjectives.percentage : '0'%>%;"><%= userProgress.words.wordsCounter > 0 ? words.adjectives.percentage : '0'%>%</div>
+                            <div id="phrasal-verbs-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.words.wordsCounter > 0 ? words.phrasalVerbs.percentage : '0'%>%;"><%= userProgress.words.wordsCounter > 0 ? words.phrasalVerbs.percentage : '0'%>%</div>
                         </div>
 
                         <div class="words-subtitle d-flex flex-wrap gap-4">
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="nouns-dot"></div>
-                                <span>Nouns: <%= collections.wordsInfo[0].quantity%></span>
+                                <span>Nouns: <%= words.nouns.quantity %></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="verbs-dot"></div>
-                                <span>Verbs: <%= collections.wordsInfo[1].quantity%></span>
+                                <span>Verbs: <%= words.verbs.quantity %></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="adverbs-dot"></div>
-                                <span>Adverbs: <%= collections.wordsInfo[2].quantity%></span>
+                                <span>Adverbs: <%= words.adverbs.quantity %></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="adjectives-dot"></div>
-                                <span>Adjectives: <%= collections.wordsInfo[3].quantity%></span>
+                                <span>Adjectives: <%= words.adjectives.quantity %></span>
                             </div>
 
                             <div class="words-subtitle-item d-flex align-items-center gap-1" id="nouns-subtitle">
                                 <div class="subtitle-dot" id="phrasal-verbs-dot"></div>
-                                <span>Phrasal Verbs: <%= collections.wordsInfo[4].quantity%></span>
+                                <span>Phrasal Verbs: <%= words.phrasalVerbs.quantity %></span>
                             </div>
                         </div>
                     </div>
@@ -77,8 +77,8 @@
                     <div class="col hours-information  d-flex flex-column gap-3">
                         <h1>Hours information</h1>
                         <div class="progress">
-                            <div id="year-bar" class="progress-bar" role="progressbar" style="width: <%= collections.hoursCollection.length > 0 ? collections.hoursInfo.hoursPercentage.daysPercentage : '0' %>%;"><%= collections.hoursCollection.length > 0 ? collections.hoursInfo.hoursPercentage.daysPercentage : '0' %>%</div>
-                            <div id="hours-bar" class="progress-bar" role="progressbar" style="width: <%= collections.hoursCollection.length > 0 ? collections.hoursInfo.hoursPercentage.listeningPercentage : '0' %>%;"><%= collections.hoursCollection.length > 0 ? collections.hoursInfo.hoursPercentage.listenigPercentage : '0' %>%</div>
+                            <div id="year-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.hours.hoursCounter > 0 ? hours.hoursPercentage.daysPercentage : '0' %>%;"><%= userProgress.hours.hoursCounter > 0 ? hours.hoursPercentage.daysPercentage : '0' %>%</div>
+                            <div id="hours-bar" class="progress-bar" role="progressbar" style="width: <%= userProgress.hours.hoursCounter > 0 ? hours.hoursPercentage.listeningPercentage : '0' %>%;"><%= userProgress.hours.hoursCounter > 0 ? hours.hoursPercentage.listenigPercentage : '0' %>%</div>
                         </div>
 
                         <div class="hours-subtitle d-flex flex-wrap gap-4">

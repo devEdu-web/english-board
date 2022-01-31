@@ -26,7 +26,11 @@ async function registerUser(req, res, next) {
         if(repeatedUser) return res.status(401).json({satusCode: 401, message: 'Email already exists'})
     
         const user = new User(name, email, userPasswordEncrypted)
-        const userProgress = new UserProgress(user._id, {wordsCounter: 0, userWords: []}, {hoursCounter: 0, hoursInfo: []})
+        const userProgress = new UserProgress(
+            user._id, 
+            {wordsCounter: 0, userWords: []},
+            {hoursCounter: 0, hoursInfo: []}
+            )
     
         await user.save()
         await userProgress.save()

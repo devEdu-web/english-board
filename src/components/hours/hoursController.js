@@ -3,28 +3,22 @@ import hourModel from './hoursModel.js'
 import {UserProgress} from '../users/UserProgress.js'
 
 function getAddHourRegisterPage(req, res, next) {
-    res.render('hours')
+    const userName = req.cookies.userName
+    res.render('hours', {userName})
 } 
 
 async function getHoursRegisterPage(req, res, next) {
-
+    const userName = req.cookies.userName
     try {
         const userId = req.cookies.userId
         const userProgress = await UserProgress.getUserProgress(userId)
 
-        res.render('hours-register', {userProgress})
+        res.render('hours-register', {userProgress, userName})
 
     } catch(e) {
         res.send(e)
     }
     
-    // hours.toArray()
-    // .then(hours => {
-    //     // console.log(hours)
-    //     res.render('hours-register', {allHours: hours})
-    // })
-    // .catch(hours)
-
 }
 
 async function postHour(req, res, next) {

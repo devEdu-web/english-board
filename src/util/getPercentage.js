@@ -1,23 +1,22 @@
-import * as wordModel from '../components/words/wordsModel.js'
-import * as hourModel from '../components/hours/hoursModel.js'
+import {UserProgress} from '../components/users/UserProgress.js'
 // menor * 100 / maior
-async function getClassesPercentage() {
-    const words = await wordModel.default.Word.getAllWords().toArray()
+async function getClassesPercentage(userId) {
+    const userProgress = await UserProgress.getUserProgress(userId)
     const wordsAttributes = {
         quantity: 0,
         get percentage(){
-            return (this.quantity * 100) / words.length
+            return (this.quantity * 100) / userProgress.words.wordsCounter
         }
     }
 
-    let nouns = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
-    let verbs = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
-    let adverbs = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
-    let adjectives = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
-    let phrasalVerbs = {...wordsAttributes, get percentage(){return Math.ceil((this.quantity * 100) / words.length)}}
+    let nouns = {quantity: 0, get percentage(){return Math.ceil((this.quantity * 100) / userProgress.words.wordsCounter)}}
+    let verbs = {quantity: 0, get percentage(){return Math.ceil((this.quantity * 100) / userProgress.words.wordsCounter)}}
+    let adverbs = {quantity: 0, get percentage(){return Math.ceil((this.quantity * 100) / userProgress.words.wordsCounter)}}
+    let adjectives = {quantity: 0, get percentage(){return Math.ceil((this.quantity * 100) / userProgress.words.wordsCounter)}}
+    let phrasalVerbs = {quantity: 0, get percentage(){return Math.ceil((this.quantity * 100) / userProgress.words.wordsCounter)}}
 
 
-    words.forEach(word => {
+    userProgress.words.userWords.forEach(word => {
         switch(word.wordClass) {
             case 'noun':
                 nouns.quantity++
@@ -37,17 +36,19 @@ async function getClassesPercentage() {
         }
     })
 
-    return [ nouns, verbs, adverbs, adjectives, phrasalVerbs ]
+    return { nouns, verbs, adverbs, adjectives, phrasalVerbs }
     
 
 }
 
-async function getHoursPercentage(){
-    const hours = await hourModel.default.Hour.getAllHourInfo().toArray()
-    if(hours.length > 0) {
+async function getHoursPercentage(userId){
+    const userProgress = await UserProgress.getUserProgress(userId)
+
+
+    if(userProgress.hours.hoursInfo.length > 0) {
 
         let hoursPercentage = {
-            listeningDays: hours[0].hoursInfo.length,
+            listeningDays: userProgress.hours.hoursInfo.length,
             get listenigPercentage() {
                 return Math.ceil(this.listeningDays * 100 / 365)
             },
@@ -61,12 +62,7 @@ async function getHoursPercentage(){
     } else {
         return []
     }
-
-
-    // hours.forEach(item => {
-    //     hoursPercentage.listeningDays = item.hoursInfo.length
-    // })
-
 }
+
 
 export {getClassesPercentage, getHoursPercentage}
