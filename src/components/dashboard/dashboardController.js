@@ -1,4 +1,3 @@
-// import {getAllCollections} from '../../util/getCollections.js'
 import {getClassesPercentage} from '../../util/getPercentage.js'
 import {getHoursPercentage} from '../../util/getPercentage.js'
 import {UserProgress} from '../users/UserProgress.js'

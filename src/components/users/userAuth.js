@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken'
 
 function validateToken(token, userData) {
+    const userToken = token
     try {
-        const token = jwt.verify(token, process.env.JWT_SECRET)
+        const token = jwt.verify(userToken, process.env.JWT_SECRET)
         return token
     } catch(e) {
         return false

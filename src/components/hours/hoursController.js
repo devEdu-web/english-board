@@ -1,5 +1,3 @@
-import hoursModel from './hoursModel.js'
-import hourModel from './hoursModel.js'
 import {UserProgress} from '../users/UserProgress.js'
 
 async function getAddHourRegisterPage(req, res, next) {
@@ -29,7 +27,6 @@ async function postHour(req, res, next) {
         const userId = req.cookies.userId
         const hourCounter = Number(req.body.hourCounter)
         const hourInfo = req.body.hourInfo
-        const hours = hourModel.Hour.getAllHourInfo()
     
         await UserProgress.updateHoursInfo(userId, hourCounter, hourInfo)
     

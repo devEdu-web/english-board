@@ -1,4 +1,3 @@
-import wordModel from "./wordsModel.js";
 import {UserProgress} from '../users/UserProgress.js'
 
 async function getAddWordsPage(req, res, next) {
