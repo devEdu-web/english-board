@@ -54,15 +54,6 @@ async function registerUser(req, res, next) {
         res.send(err)
     }
 
-
-
-    
-
-    // user.save()
-    // .then(result => res.send('user saved'))
-    // .catch(e => res.send(e))
-
-
 }
 
 async function logUser(req, res, next) {
@@ -83,7 +74,11 @@ async function logUser(req, res, next) {
 
     res.redirect('/')
 
-
 }
 
-export {getLoginPage, getRegisterPage, registerUser, logUser}
+function userLogout(req, res, next) {
+    res.clearCookie('tk')
+    res.redirect('/login')
+}
+
+export {getLoginPage, getRegisterPage, registerUser, logUser, userLogout}

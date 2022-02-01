@@ -7,6 +7,7 @@ const router = Router()
 
 router.get('/login', userController.getLoginPage)
 router.get('/register', userController.getRegisterPage)
+router.get('/logout', userController.userLogout)
 
 router.post('/login', validation.loginValidation, userController.logUser)
 router.post('/register', validation.registerValidation, userController.registerUser)
