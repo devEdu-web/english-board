@@ -25,6 +25,10 @@ function getRegisterPage(req, res, next) {
     res.sendFile(path.join(__dirname, '..', '..', '..', 'views', 'register-page.html'))
 }
 
+function getEditProfilePage(req, res, next) {
+    res.render('edit-profile-page')
+}
+
 async function registerUser(req, res, next) {
 
     try {
@@ -81,4 +85,4 @@ function userLogout(req, res, next) {
     res.redirect('/login')
 }
 
-export {getLoginPage, getRegisterPage, registerUser, logUser, userLogout}
+export {getLoginPage, getRegisterPage, getEditProfilePage, registerUser, logUser, userLogout}
