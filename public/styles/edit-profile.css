@@ -8,68 +8,114 @@ body {
     min-height: 100vh;
     background-color: #1E1E2E;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 main {
-    min-height: 80vh;
-    min-width: 40vw;
-    border: 1px solid rgba(255, 255, 255, 0.747);
+    padding: 2rem;
+    width: 100vw;
     /* background-color: red; */
 }
 
-.user-picture {
-    width: 140px; 
-    height: 140px; 
-    background-color: gray;
+
+
+.profile-container {
+    padding: 8px;
 }
 
-.userName-span {
-    font-size: 1.8rem;
+img {
+    /* width: 10vw; */
+    width: 150px;
+    border-radius: 50%;
 }
 
-.userEmail-span {
-    font-size: 1rem;
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
-input[type="text"], input[type="password"] {
-    color: white;
-    background-color: #1E1E2E;
-    outline: none;
-    padding: 5px;
+.button-group {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+input {
+    width: 80%;
+    margin-bottom: 12px;
+}
+
+input[type="submit"], input[type='file'] {
+    width: 100%;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
     /* border: none; */
-    border: 1px solid rgba(255, 255, 255, 0.671);
+    border: 1px solid rgba(255, 255, 255, 0.561);
+    padding: 3px;
+    outline: none;
+    background-color: #1E1E2E;
+    color: white;
 }
 
-input[type='submit'] {
-    background-color: #D90368;
+input[type="submit"] {
+    padding: 5px 20px;
     border: none;
-    color: white;
+    outline: none;
     border-radius: 100px;
-    padding: 5px 15px;
+    background-color: #D90368;
+    color: white;
     font-weight: bolder;
 }
 
-@media screen and (max-width: 500px) {
-
-    .userName-span {
-        font-size: 1.3rem;
+@media screen and (max-width: 450px) {
+    main {
+        padding: 20px;
     }
 
-    label {
-        font-size: 0.8rem;
+    img {
+        width: 20vw;
     }
 
-    .input-div {
-        margin-top: 1rem;
+    .profile-col {
+        margin-bottom: 2rem;
+
     }
 
-    .user-picture {
-        width: 120px;
-        height: 120px;
-        background-color: grey;
+    .col-settings {
+        /* background-color: red; */
+
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;    
+    }
+
+    .button-group {
+        width: 100%; 
+        flex-direction: column;
+        align-items: flex-start;
+        /* align-items: center; */
+        /* justify-content: center; */
+        /* background-color: yellow; */
+    }
+
+    .input-button {
+        /* background-color: yellow; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    input[type='submit'] {
+        margin-top: 16px;
+        width: 50%;
     }
 
 }

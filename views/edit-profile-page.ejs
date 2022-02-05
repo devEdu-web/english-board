@@ -9,54 +9,74 @@
     <title>Edit profile</title>
 </head>
 <body>
-    <main class="px-4 py-2">
-        <div class="row mb-4">   
-            <div class="user-picture col col-6 col-md-1 d-flex justify-content-center align-items-center">140 x 140</div>
-            <div class="col col-6 d-flex flex-column gap-1">
-                <span class="userName-span">User Name</span>
-                <span class="userEmail-span mb-4">userEmail@gmail.com</span>
-                <input type="file" name="picture" id="picture">
-            </div>
-        </div>
+    <main>
 
-        <form action="" class="d-relative">
+        <div class="row">
 
-            <div class="row mb-5">
-                <div class="col d-flex flex-column">
-                    <label for="">Name</label>
-                    <input type="text" name="name" id="">
+
+            <div class="col col-md-4 col-12 profile-col">
+
+                <div class=" profile-container d-flex flex-column align-items-center justify-content-center">
+
+                    <img class="mb-3" src="/images/profile-test.png" alt="">
+                    <span class="fw-bolder">Nome qualquer</span>
+                    <span class="fw-light">emailqualquer@gmail.com</span>
                 </div>
-                <div class="col d-flex flex-column">
-                    <label for="">Email</label>
-                    <input type="text" name="email" id="">
-                </div>
+
             </div>
 
-            <div class="row">
-                <span class="mb-3"><strong>Change Password</strong></span>
-                <div class="col col-6 d-flex flex-column gap-3">
+    
+
+            <div class="col col-settings">
+
+
+                <h2 class="">Profile settings</h2>
+
+                <form action="">
+
                     <div class="form-group">
-                        <label for="">Current password</label>
-                        <input type="password" name="currentPassword" id="">
+                        <label for="">Edit name</label>
+                        <input type="text" name="name" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Edit email</label>
+                        <input type="email" name="email" id="">
                     </div>
 
                     <div class="form-group">
                         <label for="">New password</label>
-                        <input type="password" name="currentPassword" id="">
+                        <input type="password" name="password" id="">
                     </div>
 
                     <div class="form-group">
                         <label for="">Confirm new password</label>
-                        <input type="password" name="currentPassword" id="">
+                        <input type="password" name="confirmPassword" id="">
                     </div>
-                </div>
+
+                    <div class="form-group button-group ">
+
+                        <div class="form-group">
+                            <label for="">Change picture</label>
+                            <input class="" type="file" name="pictureProfile" id="">
+                        </div>
+
+                        <div class="form-group input-button">
+                            <input type="submit" value="Save changes">
+                        </div>
+
+                    </div>
+
+
+                </form>
+
+
+
             </div>
 
-            <div class="input-div row d-flex justify-content-end">
-                <input class="col col-6 col-sm-3" type="submit" value="Save changes">
-            </div>
 
-        </form>
+        </div>
+
 
     </main>
 </body>

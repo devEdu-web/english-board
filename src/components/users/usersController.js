@@ -26,6 +26,11 @@ function getRegisterPage(req, res, next) {
 }
 
 function getEditProfilePage(req, res, next) {
+    const userToken = req.cookies.tk
+    const isLogged = validateToken(userToken, process.env.JWT_SECRET)
+
+    if(!isLogged) return res.redirect('/login')
+
     res.render('edit-profile-page')
 }
 
@@ -70,7 +75,7 @@ async function logUser(req, res, next) {
 
 
     const {name, _id} = thisUserExists
-    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: 60})
+    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: '1h'})
 
     res.cookie('tk', userToken),
     res.cookie('userName', name)
