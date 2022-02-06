@@ -17,6 +17,12 @@ class User {
         return db.collection('users').findOne({email})
     }
 
+    static findUserById(userId) {
+        return db.collection('users').findOne({
+            _id: new ObjectId(userId)
+        })
+    }
+
 }
 
 export {User}

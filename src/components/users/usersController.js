@@ -25,13 +25,17 @@ function getRegisterPage(req, res, next) {
     res.sendFile(path.join(__dirname, '..', '..', '..', 'views', 'register-page.html'))
 }
 
-function getEditProfilePage(req, res, next) {
+async function getEditProfilePage(req, res, next) {
     const userToken = req.cookies.tk
+    const userId = req.cookies.userId
     const isLogged = validateToken(userToken, process.env.JWT_SECRET)
+    const currentUser = await User.findUserById(userId)
+
+    console.log(currentUser)
 
     if(!isLogged) return res.redirect('/login')
 
-    res.render('edit-profile-page')
+    res.render('edit-profile-page', {user: currentUser})
 }
 
 async function registerUser(req, res, next) {
@@ -42,7 +46,7 @@ async function registerUser(req, res, next) {
         const repeatedUser = await User.findUserByEmail(email)
         const userPasswordEncrypted = await bcrypt.hash(password, 10)
     
-        if(repeatedUser) return res.status(401).json({satusCode: 401, message: 'Email already exists'})
+        if(repeatedUser) return res.status(401).json({statusCode: 401, message: 'Email already exists'})
     
         const user = new User(name, email, userPasswordEncrypted)
         const userProgress = new UserProgress(
