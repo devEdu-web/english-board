@@ -7,7 +7,6 @@ import { UserProgress } from './UserProgress.js';
 import { validateToken } from './userAuth.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-
 function getLoginPage(req, res, next) {
     const userToken = req.cookies.tk
     const isLogged = validateToken(userToken, process.env.JWT_SECRET)
@@ -60,8 +59,6 @@ async function registerUser(req, res, next) {
 
         res.send('User and progress saved')
 
-        console.log(user)
-        console.log(userProgress)
 
     } catch(err) {
         res.send(err)
@@ -94,4 +91,9 @@ function userLogout(req, res, next) {
     res.redirect('/login')
 }
 
-export {getLoginPage, getRegisterPage, getEditProfilePage, registerUser, logUser, userLogout}
+function postUserChanges(req, res, next) {
+    console.log(req.body)
+    console.log(req.file)
+}
+
+export {getLoginPage, getRegisterPage, getEditProfilePage, registerUser, logUser, userLogout, postUserChanges}
