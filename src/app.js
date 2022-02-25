@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import cors from 'cors'
 import multer from 'multer'
+import cloudinary from 'cloudinary'
 import cookieParser from "cookie-parser";
 import wordsRouter from "./router/words.js";
 import hoursRouter from "./router/hours.js";
@@ -11,7 +12,13 @@ import userRoutes from "./router/userRoutes.js";
 
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const cloudInit = cloudinary.v2
 
+cloudInit.config({
+    cloud_name: 'dp3bghjkn',
+    api_key: '235814167489939',
+    api_secret: 'XkONM_b_-SqKfH8yikeXHsjpNlM'
+})
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "views"));

@@ -2,11 +2,12 @@ import {db} from '../../config/database.js'
 import {ObjectId} from 'mongodb'
 
 class User {
-    constructor(name, email, password) {
+    constructor(name, email, password, profilePicture = {url: undefined}) {
         this._id = ObjectId()
         this.name = name,
         this.email = email,
         this.password = password
+        this.profilePicture = profilePicture
     }
 
     save() {

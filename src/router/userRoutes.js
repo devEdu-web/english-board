@@ -3,7 +3,7 @@ import multer from 'multer'
 import * as userController from '../components/users/usersController.js'
 import * as validation from '../components/users/usersValidation.js'
 import * as userAuth from '../components/users/userAuth.js'
-import { fileFilter, fileStorage } from '../components/users/userFilesConfig.js'
+import { fileFilter, fileStorage } from '../components/files/filesConfig.js'
 
 const router = Router()
 const upload = multer({

@@ -7,6 +7,15 @@ import { UserProgress } from './UserProgress.js';
 import { validateToken } from './userAuth.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+
+
+import cloudinary from 'cloudinary'
+const cloudInit = cloudinary.v2
+
+
+
+
+
 function getLoginPage(req, res, next) {
     const userToken = req.cookies.tk
     const isLogged = validateToken(userToken, process.env.JWT_SECRET)
@@ -94,6 +103,7 @@ function userLogout(req, res, next) {
 function postUserChanges(req, res, next) {
     console.log(req.body)
     console.log(req.file)
+
 }
 
 export {getLoginPage, getRegisterPage, getEditProfilePage, registerUser, logUser, userLogout, postUserChanges}
