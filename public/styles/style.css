@@ -93,6 +93,12 @@ button {
         display: none;
     }
 
+    .user-picture {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+    }
+
     .user-mobile {
         display: flex;
         margin: 16px;
