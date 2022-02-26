@@ -103,8 +103,7 @@ function userLogout(req, res, next) {
 async function postUserChanges(req, res, next) {
     const {path, filename} = req.file
     const {userId} = req.cookies
-    const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId})
-
+    const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId, })
     await User.updateProfilePicture(userId, uploadFile.url)
     res.send('profile picture saved')
     
