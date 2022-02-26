@@ -18,7 +18,7 @@
 
                 <div class=" profile-container d-flex flex-column align-items-center justify-content-center">
 
-                    <img class="mb-3" src="<%= user.profilePicture.url %>" alt="">
+                    <img class="mb-3" src="<%= user.profilePicture.url == undefined ?' https://images8.alphacoders.com/109/1098031.png' : user.profilePicture.url %>" alt="">
                     <span class="fw-bolder"><%= user.name %> </span>
                     <span class="fw-light"><%= user.email %> </span>
                 </div>

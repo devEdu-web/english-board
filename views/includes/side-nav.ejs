@@ -81,7 +81,7 @@
 
         <div class="fixed-bottom user user-mobile dropdown mx-2">
             <div id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="user-picture img-fluid" src="<%= userInfo.profilePicture.url %> " alt="">
+                <img class="user-picture img-fluid" src="<%= userInfo.profilePicture.url === undefined ? userInfo.profilePicture.url : 'https://images8.alphacoders.com/109/1098031.png' %> " alt="">
                 <img class="arrow" src="/images/arrow80x80.png" alt="">
             </div>
 
