@@ -1,10 +1,12 @@
 import {UserProgress} from '../users/UserProgress.js'
+import {User} from '../users/User.js'
 
 async function getAddHourRegisterPage(req, res, next) {
     const userId = req.cookies.userId
     const userProgress = await UserProgress.getUserProgress(userId)
     const userName = req.cookies.userName
-    res.render('hours', {userName, userProgress})
+    const userInfo = await User.findUserById(userId)
+    res.render('hours', {userName, userProgress, userInfo})
 } 
 
 async function getHoursRegisterPage(req, res, next) {
@@ -12,8 +14,8 @@ async function getHoursRegisterPage(req, res, next) {
     try {
         const userId = req.cookies.userId
         const userProgress = await UserProgress.getUserProgress(userId)
-
-        res.render('hours-register', {userProgress, userName})
+        const userInfo = await User.findUserById(userId)
+        res.render('hours-register', {userProgress, userName, userInfo})
 
     } catch(e) {
         res.send(e)
