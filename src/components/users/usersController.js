@@ -100,9 +100,14 @@ function userLogout(req, res, next) {
     res.redirect('/login')
 }
 
-function postUserChanges(req, res, next) {
-    console.log(req.body)
-    console.log(req.file)
+async function postUserChanges(req, res, next) {
+    const {path, filename} = req.file
+    const {userId} = req.cookies
+    const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId})
+
+    await User.updateProfilePicture(userId, uploadFile.url)
+    res.send('profile picture saved')
+    
 
 }
 

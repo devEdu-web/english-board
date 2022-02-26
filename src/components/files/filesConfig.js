@@ -1,7 +1,6 @@
 import multer from 'multer'
 
 export const fileStorage = multer.diskStorage({
-    destination: (req, file, callback) => callback(null, './uploads'),
     filename: (req, file, callback) => callback(null, file.originalname)
 })
 

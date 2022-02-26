@@ -24,6 +24,13 @@ class User {
         })
     }
 
+    static updateProfilePicture(userId, url) {
+        return db.collection('users').updateOne(
+            {_id: new ObjectId(userId)},
+            {$set: {"profilePicture.url": url}}
+        )
+    }
+
 }
 
 export {User}
