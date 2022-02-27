@@ -9,12 +9,10 @@
     <title>Edit profile</title>
 </head>
 <body>
-    <main>
+    <main class="d-flex flex-column justify-content-start align-items-center">
 
-        <div class="row">
-
-
-            <div class="col col-md-4 col-12 profile-col">
+        <div class="row mb-5">
+            <div class="profile-col">
 
                 <div class=" profile-container d-flex flex-column align-items-center justify-content-center">
 
@@ -25,56 +23,51 @@
 
             </div>
 
-    
 
-            <div class="col col-settings">
+        </div>
+
+        <div class="row settings-row">
+            <h5>Profile settings</h5>
 
 
-                <h2 class="">Profile settings</h2>
+                <div class="flex flex-column settings-container gap-5">
 
-                <form action="/edit-profile" method="post" enctype="multipart/form-data">
 
-                    <div class="form-group">
-                        <label for="">Edit name</label>
-                        <input type="text" name="name" id="" value="<%= user.name %>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Edit email</label>
-                        <input type="email" name="email" id="" value="<%= user.email %> ">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">New password</label>
-                        <input type="password" name="password" id="">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Confirm new password</label>
-                        <input type="password" name="confirmPassword" id="">
-                    </div>
-
-                    <div class="form-group button-group ">
-
-                        <div class="form-group">
-                            <label for="">Change picture</label>
-                            <input class="" type="file" name="pictureProfile" id="">
+                    <div class="userInfo-container name-container d-flex align-items-center justify-content-between">
+                        <div class="name d-flex flex-column">
+                            <span><strong>Name</strong></span>
+                            <span class="fw-lighter"><%= user.name %> </span>
                         </div>
+                        <button>Change</button>
+                    </div>
 
-                        <div class="form-group input-button">
-                            <input type="submit" value="Save changes">
+                    <div class="userInfo-container email-container d-flex align-items-center justify-content-between">
+                        <div class="email d-flex flex-column">
+                            <span><strong>Email</strong></span>
+                            <span class="fw-lighter"><%= user.email %> </span>
                         </div>
+                        <button>Change</button>
+                    </div>
 
+                    <div class="userInfo-container password-container d-flex align-items-center justify-content-between">
+                        <div class="password d-flex flex-column">
+                            <span><strong>Password</strong></span>
+                            <span class="fw-lighter">Must be at least 6 characters long</span>
+                        </div>
+                        <button>Change</button>
+                    </div>
+
+                    <div class="userInfo-container picture-container d-flex align-items-center justify-content-between">
+                        <div class="picture d-flex flex-column">
+                            <input type="file" name="pictureProfile" id="">
+                        </div>
+                        <button>Change</button>
                     </div>
 
 
-                </form>
+                </div>
 
-
-
-            </div>
-
-
+                
         </div>
 
 

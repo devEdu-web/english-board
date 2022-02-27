@@ -104,7 +104,14 @@ async function postUserChanges(req, res, next) {
     const {path, filename} = req.file
     const {userId} = req.cookies
     const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId, })
+
+
+
     await User.updateProfilePicture(userId, uploadFile.url)
+    // melhora esse código no user model pra salvar todas as informações do usuario, não só a foto
+    // pensa em uma forma, se o usuario não colocar senha, a aplicação mantem a que está no banco
+
+
     res.send('profile picture saved')
     
 
