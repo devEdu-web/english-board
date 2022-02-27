@@ -96,23 +96,32 @@
     </main>
 
 
-    <div id="change-name-container" class="edit-container">
-
-        name
-        <button type="button" class="btn-close close-containers" aria-label="Close"></button>
-
+    <div id="change-name-container" class="edit-container edit-name-container">
+        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
+        <form class="d-flex justify-content-around" action="/edit-name" method="post">
+            <input type="text" name="updatedName" id="" placeholder="Updated name">
+            <input type="submit" value="Update">
+        </form>
     </div>
 
 
 
-    <div id="change-email-container" class="edit-container">
-        email
-        <button type="button" class="btn-close close-containers" aria-label="Close"></button>
+    <div id="change-email-container" class="edit-container edit-email-container">
+        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
+        <form class="d-flex flex-column align-items-center gap-3" action="/edit-name" method="post">
+            <input type="email" name="updatedEmail" id="" placeholder="Updated email">
+            <input type="password" name="password" id="" placeholder="Confirm your password">
+            <input type="submit" value="Update">
+        </form>
     </div>
 
-    <div id="change-password-container" class="edit-container">
-        password
-        <button type="button" class="btn-close close-containers" aria-label="Close"></button>
+    <div id="change-password-container" class="edit-container edit-password-container">
+        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
+        <form class="d-flex flex-column align-items-center gap-3" action="/edit-name" method="post">
+            <input type="password" name="updatedPassword" id="" placeholder="Updated password">
+            <input type="password" name="updatedConfirmPassword" id="" placeholder="Confirm password">
+            <input type="submit" value="Update">
+        </form>
     </div>
 
 

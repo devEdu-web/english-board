@@ -14,8 +14,8 @@ for(let i = 0; i < closeButtons.length; i++) {
     closeButtons[i].addEventListener('click', closeContainers)
 }
 
-// closeButton.addEventListener('click', closeContainers)
-
+// Adiciona os conteudos nos containers
+// Deixa os containers com os conteudos responsivos
 
 editNameButton.addEventListener('click', editName)
 emailButton.addEventListener('click', editEmail)
