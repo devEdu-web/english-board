@@ -9,7 +9,7 @@
     <title>Edit profile</title>
 </head>
 <body>
-    <main class="d-flex flex-column justify-content-start align-items-center">
+    <main id="main" class="d-flex flex-column justify-content-start align-items-center">
 
         <div class="row mb-5">
             <div class="profile-col">
@@ -29,48 +29,95 @@
         <div class="row settings-row">
             <h5>Profile settings</h5>
 
+                <!-- <form action="/edit-profile" method="post" enctype="multipart/form-data">
 
-                <div class="flex flex-column settings-container gap-5">
-
-
-                    <div class="userInfo-container name-container d-flex align-items-center justify-content-between">
-                        <div class="name d-flex flex-column">
-                            <span><strong>Name</strong></span>
-                            <span class="fw-lighter"><%= user.name %> </span>
-                        </div>
-                        <button>Change</button>
+                    <div class="form-group">
+                        <label for="">Edit name</label>
+                        <input type="text" name="name" id="" value="<%= user.name %>">
                     </div>
 
-                    <div class="userInfo-container email-container d-flex align-items-center justify-content-between">
-                        <div class="email d-flex flex-column">
-                            <span><strong>Email</strong></span>
-                            <span class="fw-lighter"><%= user.email %> </span>
-                        </div>
-                        <button>Change</button>
-                    </div>
-
-                    <div class="userInfo-container password-container d-flex align-items-center justify-content-between">
-                        <div class="password d-flex flex-column">
-                            <span><strong>Password</strong></span>
-                            <span class="fw-lighter">Must be at least 6 characters long</span>
-                        </div>
-                        <button>Change</button>
-                    </div>
-
-                    <div class="userInfo-container picture-container d-flex align-items-center justify-content-between">
-                        <div class="picture d-flex flex-column">
-                            <input type="file" name="pictureProfile" id="">
-                        </div>
-                        <button>Change</button>
+                    <div class="form-group">
+                        <label for="">Edit email</label>
+                        <input type="email" name="email" id="" value="<%= user.email %> ">
                     </div>
 
 
+                    <div class="form-group button-group ">
+
+                        <div class="form-group">
+                            <label for="">Change picture</label>
+                            <input class="" type="file" name="pictureProfile" id="">
+                        </div>
+
+                        <div class="form-group input-button">
+                            <input type="submit" value="Save changes">
+                        </div>
+
+                    </div>
+
+
+                </form> -->
+
+
+            <div class="flex flex-column settings-container gap-5">
+                <div class="userInfo-container name-container d-flex align-items-center justify-content-between">
+                    <div class="name d-flex flex-column">
+                        <span><strong>Name</strong></span>
+                        <span class="fw-lighter"><%= user.name %> </span>
+                    </div>
+                    <button id="nameButton" class="editButton">Change</button>
                 </div>
 
-                
+                <div class="userInfo-container email-container d-flex align-items-center justify-content-between">
+                    <div class="email d-flex flex-column">
+                        <span><strong>Email</strong></span>
+                        <span class="fw-lighter"><%= user.email %> </span>
+                    </div>
+                    <button id="emailButton" class="editButton">Change</button>
+                </div>
+
+                <div class="userInfo-container password-container d-flex align-items-center justify-content-between">
+                    <div class="password d-flex flex-column">
+                        <span><strong>Password</strong></span>
+                        <span class="fw-lighter">Must be at least 6 characters long</span>
+                    </div>
+                    <button id="passwordButton" class="editButton">Change</button>
+                </div>
+
+                <div class="userInfo-container picture-container d-flex align-items-center justify-content-between">
+                    <div class="picture d-flex flex-column">
+                        <input type="file" name="pictureProfile" id="">
+                    </div>
+                    <button id="fileButton" class="editButton">Change</button>
+                </div>
+            </div>
         </div>
 
-
     </main>
+
+
+    <div id="change-name-container" class="edit-container">
+
+        name
+        <button type="button" class="btn-close close-containers" aria-label="Close"></button>
+
+    </div>
+
+
+
+    <div id="change-email-container" class="edit-container">
+        email
+        <button type="button" class="btn-close close-containers" aria-label="Close"></button>
+    </div>
+
+    <div id="change-password-container" class="edit-container">
+        password
+        <button type="button" class="btn-close close-containers" aria-label="Close"></button>
+    </div>
+
+
+
+
+    <script src="/js/edit-profile.js"></script>
 </body>
 </html>

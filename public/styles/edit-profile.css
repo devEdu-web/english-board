@@ -21,6 +21,10 @@ main {
     background-color: #27293D;
 }
 
+.edit-mode{
+    opacity: 50%;
+}
+
 .profile-container {
     padding: 8px;
 }
@@ -71,34 +75,18 @@ button {
     
 }
 
-input {
-    width: 80%;
-    margin-bottom: 12px;
+.edit-container{
+    padding: 10px;
+    display: none;
+    width: 30vw;
+    height: 45vh;
+    /* background-color: red; */
+    background-color: rgb(26, 23, 23);
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
-input[type="submit"], input[type='file'] {
-    width: 100%;
-}
-
-input[type="text"], input[type="password"], input[type="email"] {
-    /* border: none; */
-    border: 1px solid rgba(255, 255, 255, 0.561);
-    padding: 3px;
-    outline: none;
-    background-color: #1E1E2E;
-    color: white;
-}
-
-input[type="submit"] {
-    padding: 5px 20px;
-    border: none;
-    outline: none;
-    border-radius: 100px;
-    background-color: #D90368;
-    color: white;
-    font-weight: bolder;
-}
-
 
 
 
