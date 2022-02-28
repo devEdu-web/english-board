@@ -79,7 +79,7 @@ async function logUser(req, res, next) {
     if(!thisUserExists) return res.send('User doesnt exists')
 
     const passwordsMatch = await bcrypt.compare(password, thisUserExists.password)
-    if(!passwordsMatch) return res.send('Wrong password')
+    if(!passwordsMatch) return res.status(400).json({errors: ['Wrong password']})
 
 
     const {name, _id} = thisUserExists

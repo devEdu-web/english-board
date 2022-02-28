@@ -16,7 +16,9 @@
             <span>Sign in to continue.</span>
         </div>
 
-        <form action="/login" method="post">
+        <div id="errorCard" class="alert alert-danger" style="display: none;"></div>
+
+        <form name="userForm" action="/login" method="post">
 
             <input type="text" name="email" id="name" placeholder="Email">
             <input type="password" name="password" id="email" placeholder="Password">
@@ -25,6 +27,6 @@
             <span>Doesn't have an account? <a href="/register">Register</a></span>
 
         </form>
-
+        <script src="/js/register.js"></script>
 </body>
 </html>
