@@ -105,6 +105,7 @@ async function updateName(req, res, next) {
 
     try {
         await User.updateName(userId, updatedName)
+        res.cookie('userName', updatedName)
         res.send('Name updated')
     } catch(e) {
         res.send(e)
