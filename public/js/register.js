@@ -1,3 +1,7 @@
+const errorCard = document.getElementById('errorCard')
+
+document.userForm.onsubmit = postRegister
+
 async function postRegister(event) {
     event.preventDefault(event)
 
@@ -10,14 +14,19 @@ async function postRegister(event) {
 
     }
 
-    
-
     try {
 
         const response = await fetch(form.action, options)
         console.log(response)
-        const json = await response.json()
-        console.log(JSON.stringify(json))
+        
+        if(response.status === 400) {
+            const json = await response.json()
+            console.log(JSON.stringify(json))
+            errorCard.style.display = 'block'
+            errorCard.innerHTML = json.errors[0]
+        } else {
+            window.location.href = response.url
+        }
 
     } catch(e) {
         console.log(e)

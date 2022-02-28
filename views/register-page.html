@@ -11,20 +11,25 @@
 <body>
     <main class="w-100 h-100">
 
-        <div>
+        <div class="welcome">
             <h1>Welcome to EnglishBoard</h1>
             <span>Register to continue.</span>
         </div>
 
+        <div id="errorCard" class="alert alert-danger" style="display: none;"></div>
+
         <form name="userForm" action="/register" method="post">
 
+
+
             <input type="text" name="name" id="name" placeholder="Name">
-            <input type="text" name="email" id="name" placeholder="Email">
-            <input type="password" name="password" id="email" placeholder="Password">
+            <input type="text" name="email" id="email" placeholder="Email">
+            <input type="password" name="password" id="password" placeholder="Password">
             <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password">
             <input type="submit" value="Register">
 
             <span>Already have an account? <a href="/login">Log in</a></span>
+
 
         </form>
 

@@ -4,19 +4,19 @@ function registerValidation(req, res, next) {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 
     if(name.length < 3) {
-        errors.push({field: 'name', message: 'Name must have 3 characteres'})
+        errors.push('Name must have 3 characters')
     }
 
     if(!email.toString().match(regex)) {
-        errors.push({field: 'email', message: 'Email invalid'})
+        errors.push('Email invalid')
     }
 
     if(password.length < 6) {
-        errors.push({field: 'password', message: 'Password must have 6 characteres'})
+        errors.push('Password must have 6 characters')
     }
 
     if(password !== confirmPassword) {
-        errors.push({field: 'confirmPassword', message: 'Passwords dont match'})
+        errors.push('Passwords dont match')
     }
 
 
@@ -24,7 +24,7 @@ function registerValidation(req, res, next) {
 
     // TODO: Treat and send properly the errors to the user and improve this validation code
 
-    res.send(errors)
+    res.status(400).json(({errors}))
 
 }
 
@@ -43,7 +43,7 @@ function loginValidation(req, res, next) {
 
     if(errors.length <= 0) return next()
 
-    res.send(errors)
+    res.status(400).json({errors})
 }
 
 export {registerValidation, loginValidation}

@@ -64,11 +64,11 @@ async function registerUser(req, res, next) {
         await user.save()
         await userProgress.save()
 
-        res.send('User and progress saved')
+        res.redirect('/login')
 
 
     } catch(err) {
-        res.send(err)
+        res.json(err)
     }
 
 }
