@@ -39,8 +39,6 @@ async function getEditProfilePage(req, res, next) {
     const isLogged = validateToken(userToken, process.env.JWT_SECRET)
     const currentUser = await User.findUserById(userId)
 
-    console.log(currentUser)
-
     if(!isLogged) return res.redirect('/login')
 
     res.render('edit-profile-page', {user: currentUser})
@@ -100,21 +98,82 @@ function userLogout(req, res, next) {
     res.redirect('/login')
 }
 
-async function postUserChanges(req, res, next) {
+
+async function updateName(req, res, next) {
+    const {userId} = req.cookies
+    const {updatedName} = req.body
+
+    try {
+        await User.updateName(userId, updatedName)
+        res.send('Name updated')
+    } catch(e) {
+        res.send(e)
+    }
+
+}
+
+async function updateEmail(req, res, next) {
+    const {userId} = req.cookies
+    const {updatedEmail, password} = req.body
+    const currentUser = await User.findUserById(userId)
+    // TO-DO: ADD PASSWORD VALIDATION MIDDLEWARE TO CHANGE EMAIL
+
+    try {
+        const passwordsMatch = await bcrypt.compare(password, currentUser.password)
+        if(!passwordsMatch) return res.send('Invalid password')
+        await User.updateEmail(userId, updatedEmail)
+        res.send('Email updated')
+    } catch(e) {
+        res.send(e)
+    }
+}
+
+async function updatePassword(req, res, next) {
+    const {userId} = req.cookies
+    const {updatedPassword} = req.body
+
+    //TO-DO ADD PASSWORD VALIDATION MIDDLEWARE
+
+    try {
+        const encryptedPassword = await bcrypt.hash(updatedPassword, 10)
+        User.updatePassword(userId, encryptedPassword)
+        res.send('Password Updated')
+
+    } catch(e) {
+        res.send(e)
+    }
+
+}
+
+async function updateProfilePicture(req, res, next) {
     const {path, filename} = req.file
     const {userId} = req.cookies
-    const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId, })
 
 
+    // TO-DO: ADD THE CLOUDINARY LOGIC INTO THE USER MODEL AND VALIDATION TO FILE SIZE
+    try {
 
-    await User.updateProfilePicture(userId, uploadFile.url)
-    // melhora esse código no user model pra salvar todas as informações do usuario, não só a foto
-    // pensa em uma forma, se o usuario não colocar senha, a aplicação mantem a que está no banco
+        const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId, })
+        await User.updateProfilePicture(userId, uploadFile.url)
+        res.send('profile picture saved')
 
-
-    res.send('profile picture saved')
+    } catch(e) {
+        res.send(e)
+    }
     
 
 }
 
-export {getLoginPage, getRegisterPage, getEditProfilePage, registerUser, logUser, userLogout, postUserChanges}
+
+export {
+    getLoginPage,
+    getRegisterPage,
+    getEditProfilePage,
+    registerUser,
+    logUser,
+    userLogout,
+    updateName,
+    updateEmail,
+    updatePassword,
+    updateProfilePicture
+}

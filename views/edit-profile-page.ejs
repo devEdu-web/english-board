@@ -10,7 +10,6 @@
 </head>
 <body>
     <main id="main" class="d-flex flex-column justify-content-start align-items-center">
-
         <div class="row mb-5">
             <div class="profile-col">
 
@@ -86,7 +85,8 @@
 
                 <div class="userInfo-container picture-container d-flex align-items-center justify-content-between">
                     <div class="picture d-flex flex-column">
-                        <input type="file" name="pictureProfile" id="">
+                        <span><strong>Profile picture</strong></span>
+                        <span class="fw-lighter">Max size: 5mb</span>
                     </div>
                     <button id="fileButton" class="editButton">Change</button>
                 </div>
@@ -96,35 +96,42 @@
     </main>
 
 
+
+
     <div id="change-name-container" class="edit-container edit-name-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex justify-content-around" action="/edit-name" method="post">
-            <input type="text" name="updatedName" id="" placeholder="Updated name">
+        <form class="d-flex justify-content-around" action="/update-name" method="post">
+            <input type="text" name="updatedName" placeholder="Updated name">
             <input type="submit" value="Update">
         </form>
     </div>
 
 
-
     <div id="change-email-container" class="edit-container edit-email-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex flex-column align-items-center gap-3" action="/edit-name" method="post">
-            <input type="email" name="updatedEmail" id="" placeholder="Updated email">
-            <input type="password" name="password" id="" placeholder="Confirm your password">
+        <form class="d-flex flex-column align-items-center gap-3" action="/update-email" method="post">
+            <input type="email" name="updatedEmail" placeholder="Updated email">
+            <input type="password" name="password" placeholder="Confirm your password">
             <input type="submit" value="Update">
         </form>
     </div>
 
     <div id="change-password-container" class="edit-container edit-password-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex flex-column align-items-center gap-3" action="/edit-name" method="post">
-            <input type="password" name="updatedPassword" id="" placeholder="Updated password">
-            <input type="password" name="updatedConfirmPassword" id="" placeholder="Confirm password">
+        <form class="d-flex flex-column align-items-center gap-3" action="/update-password" method="post">
+            <input type="password" name="updatedPassword" placeholder="Updated password">
+            <input type="password" name="confirmUpdatedPassword" placeholder="Confirm password">
             <input type="submit" value="Update">
         </form>
     </div>
 
-
+    <div id="change-picture-container" class="edit-container edit-profile-container">
+        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
+        <form class="d-flex justify-content-around" action="/update-profile-picture" method="post" enctype="multipart/form-data">
+            <input type="file" name="updatedPicture">
+            <input type="submit" value="Update">
+        </form>
+    </div>
 
 
     <script src="/js/edit-profile.js"></script>

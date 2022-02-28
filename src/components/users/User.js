@@ -24,6 +24,27 @@ class User {
         })
     }
 
+    static updateName(userId, updatedName) {
+        return db.collection('users').updateOne(
+            {_id: new ObjectId(userId)},
+            {$set: {name: updatedName}}   
+        )
+    }
+
+    static updateEmail(userId, updatedEmail) {
+        return db.collection('users').updateOne(
+            {_id: new ObjectId(userId)},
+            {$set: {email: updatedEmail} }
+        )
+    }
+
+    static updatePassword(userId, updatedPassword) {
+        return db.collection('users').updateOne(
+            {_id: new ObjectId(userId)},
+            {$set: {password: updatedPassword}}
+        )
+    }
+
     static updateProfilePicture(userId, url) {
         return db.collection('users').updateOne(
             {_id: new ObjectId(userId)},

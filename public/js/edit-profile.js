@@ -1,13 +1,17 @@
 const main = document.getElementById('main')
+
 const nameContainer = document.getElementById('change-name-container')
 const emailContainer = document.getElementById('change-email-container')
 const passwordContainer = document.getElementById('change-password-container')
 const allEditContainers = document.getElementsByClassName('edit-container')
+const pictureContainer = document.getElementById('change-picture-container')
+
 const allEditButtons = document.getElementsByClassName('editButton')
 
 const editNameButton = document.getElementById('nameButton')
 const emailButton = document.getElementById('emailButton')
 const passwordButton = document.getElementById('passwordButton')
+const fileButton = document.getElementById('fileButton')
 const closeButtons = document.getElementsByClassName('close-containers')
 
 for(let i = 0; i < closeButtons.length; i++) {
@@ -20,6 +24,7 @@ for(let i = 0; i < closeButtons.length; i++) {
 editNameButton.addEventListener('click', editName)
 emailButton.addEventListener('click', editEmail)
 passwordButton.addEventListener('click', editPassword)
+fileButton.addEventListener('click', editPicture)
 
 function editName(event) {
     disableEditButtons()
@@ -38,6 +43,12 @@ function editPassword() {
     disableEditButtons()
     main.classList.add('edit-mode')
     passwordContainer.style.display = 'block'
+}
+
+function editPicture() {
+    disableEditButtons()
+    main.classList.add('edit-mode')
+    pictureContainer.style.display = 'block'
 }
 
 function closeContainers() {

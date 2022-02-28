@@ -99,6 +99,11 @@ button, input[type="submit"] {
     height: 30vh;
 }
 
+.edit-profile-container {
+    width: 30vw;
+    height: 20vh;
+}
+
 form {
     width: 100%;
 }
