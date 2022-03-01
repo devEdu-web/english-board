@@ -108,6 +108,10 @@ form {
     width: 100%;
 }
 
+.form-group {
+    width: 100%;
+}
+
 input[type='text'], input[type='password'], input[type='email'] {
     width: 60%;
     padding: 3px;

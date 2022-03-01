@@ -26,9 +26,9 @@ router.post('/register', validation.registerValidation, userController.registerU
 // router.post('/edit-profile', upload.single('pictureProfile'), userController.postUserChanges)
 
 // TO-DO: CHANGE THIS METHODS TO PUT
-router.post('/update-name', userController.updateName)
-router.post('/update-email', userController.updateEmail)
-router.post('/update-password', userController.updatePassword)
+router.post('/update-name', validation.changeNameValidation, userController.updateName)
+router.post('/update-email', validation.changeEmailValidation, userController.updateEmail)
+router.post('/update-password', validation.changePasswordValidation, userController.updatePassword)
 router.post('/update-profile-picture', upload.single('updatedPicture'), userController.updateProfilePicture)
 
 export default {router}

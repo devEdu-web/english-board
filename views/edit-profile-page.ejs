@@ -100,28 +100,37 @@
 
     <div id="change-name-container" class="edit-container edit-name-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex justify-content-around" action="/update-name" method="post">
-            <input type="text" name="updatedName" placeholder="Updated name">
-            <input type="submit" value="Update">
+        <form name="userForm" class="userForm d-flex flex-column align-items-center" action="/update-name" method="post">
+            <div class="mb-2 d-flex justify-content-around">
+                <input type="text" name="updatedName" placeholder="Updated name">
+                <input type="submit" value="Update">
+            </div>
+            <span class="text-danger" id="errorCard" style="display: none;">Error</span>
         </form>
     </div>
 
 
     <div id="change-email-container" class="edit-container edit-email-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex flex-column align-items-center gap-3" action="/update-email" method="post">
-            <input type="email" name="updatedEmail" placeholder="Updated email">
-            <input type="password" name="password" placeholder="Confirm your password">
-            <input type="submit" value="Update">
+        <form class="userForm d-flex flex-column align-items-center" action="/update-email" method="post">
+            <div class="form-group d-flex flex-column align-items-center gap-3">
+                <input type="email" name="updatedEmail" placeholder="Updated email">
+                <input type="password" name="password" placeholder="Confirm your password">
+                <input type="submit" value="Update">
+            </div>
+            <span class="text-danger" class="errorCard" style="display: none;">Error</span>
         </form>
     </div>
 
     <div id="change-password-container" class="edit-container edit-password-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex flex-column align-items-center gap-3" action="/update-password" method="post">
-            <input type="password" name="updatedPassword" placeholder="Updated password">
-            <input type="password" name="confirmUpdatedPassword" placeholder="Confirm password">
-            <input type="submit" value="Update">
+        <form class="userForm d-flex flex-column align-items-center" action="/update-password" method="post">
+            <div class="form-group flex-column align-items-center gap-3">
+                <input type="password" name="updatedPassword" placeholder="Updated password">
+                <input type="password" name="confirmUpdatedPassword" placeholder="Confirm password">
+                <input type="submit" value="Update">
+            </div>
+            <span class="text-danger" class="errorCard" style="display: none;">Error</span>
         </form>
     </div>
 
@@ -135,5 +144,6 @@
 
 
     <script src="/js/edit-profile.js"></script>
+    <script src="/js/updatesValidation.js"></script>
 </body>
 </html>

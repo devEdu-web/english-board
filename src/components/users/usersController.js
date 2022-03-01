@@ -75,13 +75,11 @@ async function registerUser(req, res, next) {
 
 async function logUser(req, res, next) {
     const {email, password} = req.body
+    // TODO: COLOCAR ESSA VALIDAÇÃO NUMA MIDDLEWARE, FICA ESPERTO COM O JWT TOKEN, PRA NAO BUSCAR O USUARIO DUAS VEZES NO BANCO DE DADOS
     const thisUserExists = await User.findUserByEmail(email)
     if(!thisUserExists) return res.send('User doesnt exists')
-
     const passwordsMatch = await bcrypt.compare(password, thisUserExists.password)
     if(!passwordsMatch) return res.status(400).json({errors: ['Wrong password']})
-
-
     const {name, _id} = thisUserExists
     const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: '1h'})
 
@@ -106,9 +104,9 @@ async function updateName(req, res, next) {
     try {
         await User.updateName(userId, updatedName)
         res.cookie('userName', updatedName)
-        res.send('Name updated')
+        res.redirect('/edit-profile')
     } catch(e) {
-        res.send(e)
+        res.json(e)
     }
 
 }
@@ -121,9 +119,9 @@ async function updateEmail(req, res, next) {
 
     try {
         const passwordsMatch = await bcrypt.compare(password, currentUser.password)
-        if(!passwordsMatch) return res.send('Invalid password')
+        if(!passwordsMatch) return res.status(400).json({errors: ['Invalid password']})
         await User.updateEmail(userId, updatedEmail)
-        res.send('Email updated')
+        res.redirect('/edit-profile')
     } catch(e) {
         res.send(e)
     }
@@ -138,7 +136,7 @@ async function updatePassword(req, res, next) {
     try {
         const encryptedPassword = await bcrypt.hash(updatedPassword, 10)
         User.updatePassword(userId, encryptedPassword)
-        res.send('Password Updated')
+        res.redirect('/edit-profile')
 
     } catch(e) {
         res.send(e)
