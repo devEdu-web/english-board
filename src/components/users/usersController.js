@@ -52,7 +52,7 @@ async function registerUser(req, res, next) {
         const repeatedUser = await User.findUserByEmail(email)
         const userPasswordEncrypted = await bcrypt.hash(password, 10)
     
-        if(repeatedUser) return res.status(401).json({statusCode: 401, message: 'Email already exists'})
+        if(repeatedUser) return res.status(400).json({errors: ['Email already exists']})
     
         const user = new User(name, email, userPasswordEncrypted)
         const userProgress = new UserProgress(
