@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import {User} from './User.js'
 import { UserProgress } from './UserProgress.js';
+import { validationResult } from 'express-validator';
 import { validateToken } from './userAuth.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -45,14 +46,15 @@ async function getEditProfilePage(req, res, next) {
 }
 
 async function registerUser(req, res, next) {
+    const errors = validationResult(req)
+    const {name, email, password} = req.body
+    if(errors.errors.length > 0) return res.status(400).json(errors)
 
     try {
-
-        const {name, email, password} = req.body
         const repeatedUser = await User.findUserByEmail(email)
         const userPasswordEncrypted = await bcrypt.hash(password, 10)
     
-        if(repeatedUser) return res.status(400).json({errors: ['Email already exists']})
+        if(repeatedUser) return res.status(400).json({errors: [{msg: 'Email already exists'}]})
     
         const user = new User(name, email, userPasswordEncrypted)
         const userProgress = new UserProgress(
@@ -68,7 +70,7 @@ async function registerUser(req, res, next) {
 
 
     } catch(err) {
-        res.json(err)
+        res.json({errors: [{msg: err.message}]})
     }
 
 }

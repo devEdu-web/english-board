@@ -18,17 +18,17 @@ router.get('/register', userController.getRegisterPage)
 router.get('/logout', userController.userLogout)
 router.get('/edit-profile', userController.getEditProfilePage)
 
-router.post('/login', validation.loginValidation, userController.logUser)
-router.post('/register', validation.registerValidation, userController.registerUser)
+// router.post('/login', validation.loginValidation, userController.logUser)
+router.post('/register', validation.emailValidationRules, userController.registerUser)
 
 
 
 // router.post('/edit-profile', upload.single('pictureProfile'), userController.postUserChanges)
 
 // TO-DO: CHANGE THIS METHODS TO PUT
-router.post('/update-name', validation.changeNameValidation, userController.updateName)
-router.post('/update-email', validation.changeEmailValidation, userController.updateEmail)
-router.post('/update-password', validation.changePasswordValidation, userController.updatePassword)
-router.post('/update-profile-picture', upload.single('updatedPicture'), userController.updateProfilePicture)
+// router.post('/update-name', validation.changeNameValidation, userController.updateName)
+// router.post('/update-email', validation.changeEmailValidation, userController.updateEmail)
+// router.post('/update-password', validation.changePasswordValidation, userController.updatePassword)
+// router.post('/update-profile-picture', upload.single('updatedPicture'), userController.updateProfilePicture)
 
 export default {router}
