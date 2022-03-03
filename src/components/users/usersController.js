@@ -77,20 +77,26 @@ async function registerUser(req, res, next) {
 
 async function logUser(req, res, next) {
     const {email, password} = req.body
-    // TODO: COLOCAR ESSA VALIDAÇÃO NUMA MIDDLEWARE, FICA ESPERTO COM O JWT TOKEN, PRA NAO BUSCAR O USUARIO DUAS VEZES NO BANCO DE DADOS
-    const thisUserExists = await User.findUserByEmail(email)
-    if(!thisUserExists) return res.send('User doesnt exists')
-    const passwordsMatch = await bcrypt.compare(password, thisUserExists.password)
-    if(!passwordsMatch) return res.status(400).json({errors: ['Wrong password']})
-    const {name, _id} = thisUserExists
-    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: '1h'})
 
-    res.cookie('tk', userToken),
-    res.cookie('userName', name)
-    res.cookie('userId', _id.toString())
+    try {
+        const fetchedUser = await User.findUserByEmail(email)
+        if(!fetchedUser) return res.status(400).json({errors: [{msg: 'Email or password invalid'}]})
 
-    res.redirect('/')
+        const passwordsMatch = await bcrypt.compare(password, fetchedUser.password)
+        if(!passwordsMatch) return res.status(400).json({errors: [{msg: 'Email or password invalid'}]})
 
+        const {name, _id} = fetchedUser
+        const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: '1h'})
+    
+        res.cookie('tk', userToken),
+        res.cookie('userName', name)
+        res.cookie('userId', _id.toString())
+    
+        res.redirect('/')
+
+    } catch(error) {
+        res.json({errors: [{msg: 'Email or password invalid.'}]})
+    }
 }
 
 function userLogout(req, res, next) {

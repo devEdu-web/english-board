@@ -18,12 +18,11 @@ router.get('/register', userController.getRegisterPage)
 router.get('/logout', userController.userLogout)
 router.get('/edit-profile', userController.getEditProfilePage)
 
-// router.post('/login', validation.loginValidation, userController.logUser)
-router.post('/register', validation.emailValidationRules, userController.registerUser)
+router.post('/login', userController.logUser)
+router.post('/register', validation.registerValidationRules, userController.registerUser)
 
 
 
-// router.post('/edit-profile', upload.single('pictureProfile'), userController.postUserChanges)
 
 // TO-DO: CHANGE THIS METHODS TO PUT
 // router.post('/update-name', validation.changeNameValidation, userController.updateName)
