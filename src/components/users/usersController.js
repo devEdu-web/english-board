@@ -6,43 +6,24 @@ import {User} from './User.js'
 import { UserProgress } from './UserProgress.js';
 import { validationResult } from 'express-validator';
 import { validateToken } from './userAuth.js';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-
-
 import cloudinary from 'cloudinary'
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const cloudInit = cloudinary.v2
 
-
-
-
-
 function getLoginPage(req, res, next) {
-    const userToken = req.cookies.tk
-    const isLogged = validateToken(userToken, process.env.JWT_SECRET)
-
-    if(isLogged) return res.redirect('/')
-
     res.sendFile(path.join(__dirname, '..', '..', '..', 'views', 'login-page.html'))
 }
 
 function getRegisterPage(req, res, next) {
-    const userToken = req.cookies.tk
-    const isLogged = validateToken(userToken, process.env.JWT_SECRET)
-
-    if(isLogged) return res.redirect('/')
     res.sendFile(path.join(__dirname, '..', '..', '..', 'views', 'register-page.html'))
 }
 
 async function getEditProfilePage(req, res, next) {
-    const userToken = req.cookies.tk
     const userId = req.cookies.userId
-    const isLogged = validateToken(userToken, process.env.JWT_SECRET)
 
     try {
-
+        
         const currentUser = await User.findUserById(userId)
-        if(!isLogged) return res.redirect('/login')
         res.render('edit-profile-page', {user: currentUser})
 
     } catch (error) {

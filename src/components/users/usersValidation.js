@@ -1,6 +1,4 @@
 import {body} from 'express-validator'
-import bcrypt from 'bcrypt'
-import {User} from './User.js'
 
 const registerValidationRules = [
     body('name').isLength({min: 3}).withMessage('Name must be 3 characters long.'),
@@ -33,6 +31,3 @@ const updatePasswordRules = [
 ]
 
 export {registerValidationRules, updateNameRules, updateEmailRules, updatePasswordRules}
-
-
-// export {registerValidation, loginValidation, changeNameValidation, changeEmailValidation, changePasswordValidation}
