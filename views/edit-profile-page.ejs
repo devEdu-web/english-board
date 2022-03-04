@@ -106,14 +106,19 @@
 
     <div id="change-picture-container" class="edit-container edit-profile-container">
         <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="d-flex justify-content-around" action="/update-profile-picture" method="post" enctype="multipart/form-data">
-            <input type="file" name="updatedPicture">
-            <input type="submit" value="Update">
+        <form class="" action="/update-profile-picture" method="post" enctype="multipart/form-data">
+            <div class="d-flex justify-content-around">
+                <input type="file" name="updatedPicture">
+                <input type="submit" value="Update">
+            </div>
+            <span class="text-danger" class="errorCard" style="display: none;">Error</span>
         </form>
     </div>
 
 
     <script src="/js/edit-profile.js"></script>
     <script src="/js/updatesValidation.js"></script>
+    <script src="/js/updateFile.js"></script>
+    
 </body>
 </html>

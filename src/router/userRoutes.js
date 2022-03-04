@@ -28,6 +28,6 @@ router.post('/register', validation.registerValidationRules, userController.regi
 router.post('/update-name', validation.updateNameRules, userController.updateName)
 router.post('/update-email', validation.updateEmailRules, userController.updateEmail)
 router.post('/update-password', validation.updatePasswordRules, userController.updatePassword)
-// router.post('/update-profile-picture', upload.single('updatedPicture'), userController.updateProfilePicture)
+router.post('/update-profile-picture', upload.single('updatedPicture'), userController.updateProfilePicture)
 
 export default {router}

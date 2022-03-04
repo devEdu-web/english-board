@@ -43,6 +43,7 @@ function editPassword() {
     disableEditButtons()
     main.classList.add('edit-mode')
     passwordContainer.style.display = 'block'
+
 }
 
 function editPicture() {

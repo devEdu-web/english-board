@@ -165,19 +165,19 @@ async function updatePassword(req, res, next) {
 }
 
 async function updateProfilePicture(req, res, next) {
-    const {path, filename} = req.file
+    const file = req.file
     const {userId} = req.cookies
-
+    if(!req.file || req.file.size > 2000000) return res.status(400).json({errors: [{msg: 'Invalid file.'}]})
 
     // TO-DO: ADD THE CLOUDINARY LOGIC INTO THE USER MODEL AND VALIDATION TO FILE SIZE
     try {
 
-        const uploadFile = await cloudInit.uploader.upload(path, {public_id: userId, })
+        const uploadFile = await cloudInit.uploader.upload(file.path, {public_id: userId, })
         await User.updateProfilePicture(userId, uploadFile.url)
-        res.send('profile picture saved')
+        res.redirect('/edit-profile')
 
-    } catch(e) {
-        res.send(e)
+    } catch(error) {
+        res.status(500).json({errors: [{msg: error.message}]})
     }
     
 
