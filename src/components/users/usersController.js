@@ -38,11 +38,17 @@ async function getEditProfilePage(req, res, next) {
     const userToken = req.cookies.tk
     const userId = req.cookies.userId
     const isLogged = validateToken(userToken, process.env.JWT_SECRET)
-    const currentUser = await User.findUserById(userId)
 
-    if(!isLogged) return res.redirect('/login')
+    try {
 
-    res.render('edit-profile-page', {user: currentUser})
+        const currentUser = await User.findUserById(userId)
+        if(!isLogged) return res.redirect('/login')
+        res.render('edit-profile-page', {user: currentUser})
+
+    } catch (error) {
+        res.status(500).json({errors: [{msg: error.message}]})
+    }
+
 }
 
 async function registerUser(req, res, next) {
@@ -69,8 +75,8 @@ async function registerUser(req, res, next) {
         res.redirect('/login')
 
 
-    } catch(err) {
-        res.json({errors: [{msg: err.message}]})
+    } catch(error) {
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 
 }
@@ -95,7 +101,7 @@ async function logUser(req, res, next) {
         res.redirect('/')
 
     } catch(error) {
-        res.json({errors: [{msg: 'Email or password invalid.'}]})
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 }
 
@@ -115,8 +121,8 @@ async function updateName(req, res, next) {
         await User.updateName(userId, updatedName)
         res.cookie('userName', updatedName)
         res.redirect('/edit-profile')
-    } catch(e) {
-        res.json(e)
+    } catch(error) {
+        res.status(500).json({errors: [{msg: 'Invalid password'}]})
     }
 
 }
@@ -124,16 +130,20 @@ async function updateName(req, res, next) {
 async function updateEmail(req, res, next) {
     const {userId} = req.cookies
     const {updatedEmail, password} = req.body
-    const currentUser = await User.findUserById(userId)
+    const errors = validationResult(req)
+    if(errors.errors.length > 0) return res.status(400).json(errors)
     // TO-DO: ADD PASSWORD VALIDATION MIDDLEWARE TO CHANGE EMAIL
-
+    
     try {
+
+        const currentUser = await User.findUserById(userId)
         const passwordsMatch = await bcrypt.compare(password, currentUser.password)
-        if(!passwordsMatch) return res.status(400).json({errors: ['Invalid password']})
+        if(!passwordsMatch) return res.status(400).json({errors: [{msg: 'Invalid password'}]})
         await User.updateEmail(userId, updatedEmail)
         res.redirect('/edit-profile')
-    } catch(e) {
-        res.send(e)
+
+    } catch(error) {
+        res.status(500).json({errors: [{msg: 'Invalid password'}]})
     }
 }
 
