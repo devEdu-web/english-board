@@ -108,6 +108,8 @@ function userLogout(req, res, next) {
 async function updateName(req, res, next) {
     const {userId} = req.cookies
     const {updatedName} = req.body
+    const errors = validationResult(req)
+    if(errors.errors.length > 0) return res.status(400).json(errors)
 
     try {
         await User.updateName(userId, updatedName)

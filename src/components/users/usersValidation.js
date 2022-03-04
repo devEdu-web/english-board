@@ -14,9 +14,11 @@ const registerValidationRules = [
     })
 ]
 
+const updateNameRules = [
+    body('updatedName').isLength({min: 3}).withMessage('Name must be 3 characters long.')
+]
 
-
-export {registerValidationRules}
+export {registerValidationRules, updateNameRules}
 
 
 // export {registerValidation, loginValidation, changeNameValidation, changeEmailValidation, changePasswordValidation}

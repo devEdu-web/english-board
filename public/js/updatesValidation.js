@@ -24,7 +24,7 @@ async function postRegister(event) {
         if(response.status === 400) {
             const json = await response.json()
             console.log(JSON.stringify(json))
-            errorAlert.innerHTML = json.errors[0]
+            errorAlert.innerHTML = json.errors[0].msg
             errorAlert.style.display = 'block'
         } else {
             window.location.href = response.url

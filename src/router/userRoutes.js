@@ -25,7 +25,7 @@ router.post('/register', validation.registerValidationRules, userController.regi
 
 
 // TO-DO: CHANGE THIS METHODS TO PUT
-// router.post('/update-name', validation.changeNameValidation, userController.updateName)
+router.post('/update-name', validation.updateNameRules, userController.updateName)
 // router.post('/update-email', validation.changeEmailValidation, userController.updateEmail)
 // router.post('/update-password', validation.changePasswordValidation, userController.updatePassword)
 // router.post('/update-profile-picture', upload.single('updatedPicture'), userController.updateProfilePicture)
