@@ -22,7 +22,17 @@ const updateEmailRules = [
     body('updatedEmail').isEmail().withMessage('Please, insert a valid email.')
 ]
 
-export {registerValidationRules, updateNameRules, updateEmailRules}
+const updatePasswordRules = [
+    body('updatedPassword').isLength({min: 6}).withMessage('Password must be 6 characters long.'),
+    body('confirmPassword').custom((value, {req}) => {
+        if(value !== req.body.updatedPassword) {
+            throw new Error('Passwords does not match.');
+        }
+        return true
+    })
+]
+
+export {registerValidationRules, updateNameRules, updateEmailRules, updatePasswordRules}
 
 
 // export {registerValidation, loginValidation, changeNameValidation, changeEmailValidation, changePasswordValidation}

@@ -12,7 +12,7 @@ async function postRegister(event) {
     const form = event.target
     const userData = new FormData(form)
     const options = {
-        method: form.method,
+        method: 'POST',
         body: new URLSearchParams(userData),
         redirect: 'follow',
 
@@ -20,8 +20,8 @@ async function postRegister(event) {
 
     try {
         const response = await fetch(form.action, options)
-        
-        if(response.status === 400) {
+        console.log(response)
+        if(response.status >= 400) {
             const json = await response.json()
             console.log(JSON.stringify(json))
             errorAlert.innerHTML = json.errors[0].msg

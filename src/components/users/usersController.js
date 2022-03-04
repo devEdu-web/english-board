@@ -122,7 +122,7 @@ async function updateName(req, res, next) {
         res.cookie('userName', updatedName)
         res.redirect('/edit-profile')
     } catch(error) {
-        res.status(500).json({errors: [{msg: 'Invalid password'}]})
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 
 }
@@ -143,23 +143,23 @@ async function updateEmail(req, res, next) {
         res.redirect('/edit-profile')
 
     } catch(error) {
-        res.status(500).json({errors: [{msg: 'Invalid password'}]})
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 }
 
 async function updatePassword(req, res, next) {
     const {userId} = req.cookies
     const {updatedPassword} = req.body
-
-    //TO-DO ADD PASSWORD VALIDATION MIDDLEWARE
+    const errors = validationResult(req)
+    if(errors.errors.length > 0) return res.status(400).json(errors)
 
     try {
         const encryptedPassword = await bcrypt.hash(updatedPassword, 10)
         User.updatePassword(userId, encryptedPassword)
         res.redirect('/edit-profile')
 
-    } catch(e) {
-        res.send(e)
+    } catch(error) {
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 
 }
