@@ -1,12 +1,11 @@
 import path from 'path'
-import { fileURLToPath } from "url";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import cloudinary from 'cloudinary'
+import { fileURLToPath } from "url";
 import {User} from './User.js'
 import { UserProgress } from './UserProgress.js';
 import { validationResult } from 'express-validator';
-import { validateToken } from './userAuth.js';
-import cloudinary from 'cloudinary'
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const cloudInit = cloudinary.v2
 
@@ -19,17 +18,14 @@ function getRegisterPage(req, res, next) {
 }
 
 async function getEditProfilePage(req, res, next) {
-    const userId = req.cookies.userId
+    const {userId} = req.cookies
 
     try {
-        
         const currentUser = await User.findUserById(userId)
         res.render('edit-profile-page', {user: currentUser})
-
     } catch (error) {
         res.status(500).json({errors: [{msg: error.message}]})
     }
-
 }
 
 async function registerUser(req, res, next) {
@@ -52,10 +48,7 @@ async function registerUser(req, res, next) {
     
         await user.save()
         await userProgress.save()
-
         res.redirect('/login')
-
-
     } catch(error) {
         res.status(500).json({errors: [{msg: error.message}]})
     }
@@ -116,13 +109,11 @@ async function updateEmail(req, res, next) {
     // TO-DO: ADD PASSWORD VALIDATION MIDDLEWARE TO CHANGE EMAIL
     
     try {
-
         const currentUser = await User.findUserById(userId)
         const passwordsMatch = await bcrypt.compare(password, currentUser.password)
         if(!passwordsMatch) return res.status(400).json({errors: [{msg: 'Invalid password'}]})
         await User.updateEmail(userId, updatedEmail)
         res.redirect('/edit-profile')
-
     } catch(error) {
         res.status(500).json({errors: [{msg: error.message}]})
     }
@@ -138,11 +129,9 @@ async function updatePassword(req, res, next) {
         const encryptedPassword = await bcrypt.hash(updatedPassword, 10)
         User.updatePassword(userId, encryptedPassword)
         res.redirect('/edit-profile')
-
     } catch(error) {
         res.status(500).json({errors: [{msg: error.message}]})
     }
-
 }
 
 async function updateProfilePicture(req, res, next) {
@@ -152,7 +141,6 @@ async function updateProfilePicture(req, res, next) {
 
     // TO-DO: ADD THE CLOUDINARY LOGIC INTO THE USER MODEL AND VALIDATION TO FILE SIZE
     try {
-
         const uploadFile = await cloudInit.uploader.upload(file.path, {public_id: userId, })
         await User.updateProfilePicture(userId, uploadFile.url)
         res.redirect('/edit-profile')
@@ -160,8 +148,6 @@ async function updateProfilePicture(req, res, next) {
     } catch(error) {
         res.status(500).json({errors: [{msg: error.message}]})
     }
-    
-
 }
 
 

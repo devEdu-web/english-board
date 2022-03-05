@@ -1,19 +1,7 @@
 import jwt from 'jsonwebtoken'
 
-function validateToken(token, userData) {
-    const userToken = token
-    try {
-        const token = jwt.verify(userToken, process.env.JWT_SECRET)
-        return token
-    } catch(e) {
-        return false
-    }
-}
-
 function canUserAccessAdminPages(req, res, next) {
     const {tk} = req.cookies
-    // if(!userToken) return res.redirect('/login')
-
     try {
         jwt.verify(tk, process.env.JWT_SECRET)
         next()
@@ -34,4 +22,4 @@ function verifyUserAuthentication(req, res, next) {
 
 }
 
-export {validateToken, canUserAccessAdminPages, verifyUserAuthentication}
+export {canUserAccessAdminPages, verifyUserAuthentication}
