@@ -1,5 +1,6 @@
 import {UserProgress} from '../users/UserProgress.js'
 import {User} from '../users/User.js'
+import {validationResult} from 'express-validator'
 
 async function getAddHourRegisterPage(req, res, next) {
     const {userId, userName} = req.cookies
@@ -29,6 +30,9 @@ async function postHour(req, res, next) {
     const {userId} = req.cookies
     const hourCounter = Number(req.body.hourCounter)
     const hourInfo = req.body.hourInfo
+    const errors = validationResult(req)
+    console.log(errors)
+    if(errors.errors.length > 0) return res.status(400).json(errors)
 
     try {   
         await UserProgress.updateHoursInfo(userId, hourCounter, hourInfo)

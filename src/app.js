@@ -37,6 +37,7 @@ export default { app };
 
 
 // ADICIONA EXPRESS VALIDATOR PARA AS HORAS E PALAVRAS
+// Ve a respeito sobre o leak, tenta modificar o edit profile, diminuindo eventos
 // MELHORA AS VALIDAÇÕES
 // MELHORA O CODIGO EM GERAL
 // MUDAR ALGUNS POST PRA PUT VIA AJAX TBM

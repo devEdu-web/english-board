@@ -1,15 +1,10 @@
-function hourValidation(req, res, next) {
-    const {hourCounter, hourInfo} = req.body
-    const errors = []
-    
-    if(hourCounter.length <= 0 || hourInfo.length <= 0) {
-        errors.push('Please fill out every field')
-    }
+import {body} from 'express-validator'
 
-    if(errors.length <= 0) return next()
 
-    res.status(400).json({errors})
+const hourValidationRules = [
+    body('hourCounter').not().isEmpty().withMessage('Please fill out every field.'),
+    body('hourInfo').not().isEmpty().withMessage('Please fill out every field.')
+]
 
-}
 
-export {hourValidation}
+export {hourValidationRules}
