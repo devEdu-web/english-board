@@ -26,94 +26,77 @@
         </div>
 
         <div class="row settings-row">
-            <h5>Profile settings</h5>
             
-            <div class="flex flex-column settings-container gap-5">
-                <div class="userInfo-container name-container d-flex align-items-center justify-content-between">
-                    <div class="name d-flex flex-column">
-                        <span><strong>Name</strong></span>
-                        <span class="fw-lighter"><%= user.name %> </span>
+
+        <form action="/edit-profile" method="post" class="d-flex flex-column gap-4">
+
+            <div class="row">
+
+                <div class="col col-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" name="name" id="">
                     </div>
-                    <button id="nameButton" class="editButton">Change</button>
                 </div>
 
-                <div class="userInfo-container email-container d-flex align-items-center justify-content-between">
-                    <div class="email d-flex flex-column">
-                        <span><strong>Email</strong></span>
-                        <span class="fw-lighter"><%= user.email %> </span>
+                <div class="col col-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" name="email" id="">
                     </div>
-                    <button id="emailButton" class="editButton">Change</button>
                 </div>
 
-                <div class="userInfo-container password-container d-flex align-items-center justify-content-between">
-                    <div class="password d-flex flex-column">
-                        <span><strong>Password</strong></span>
-                        <span class="fw-lighter">Must be at least 6 characters long</span>
-                    </div>
-                    <button id="passwordButton" class="editButton">Change</button>
-                </div>
-
-                <div class="userInfo-container picture-container d-flex align-items-center justify-content-between">
-                    <div class="picture d-flex flex-column">
-                        <span><strong>Profile picture</strong></span>
-                        <span class="fw-lighter">Max size: 5mb</span>
-                    </div>
-                    <button id="fileButton" class="editButton">Change</button>
-                </div>
             </div>
-        </div>
+
+            <div class="row">
+
+
+                <div class="col col-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="">New Password</label>
+                        <input type="text" name="newPassword" id="">
+                    </div>
+                </div>
+
+                <div class="col col-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="">Confirm Password</label>
+                        <input type="text" name="confirmNewPassword" id="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col col-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="">Picture</label>
+                        <input type="file" name="updatedPicture" id="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row d-flex align-items-end justify-content-between">
+
+                <div class="col col-12 col-sm-6">
+                    <label for="">Current Password</label>
+                    <input type="password" name="currentPassword" id="">
+                </div>
+
+                <div class="col col-12 col-sm-2">
+                    <input type="submit" value="Save">
+                </div>
+
+            </div>
+
+
+        </form>
 
     </main>
 
 
-
-
-    <div id="change-name-container" class="edit-container edit-name-container">
-        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form name="userForm" class="userForm d-flex flex-column align-items-center" action="/update-name" method="post">
-            <div class="mb-2 d-flex justify-content-around">
-                <input type="text" name="updatedName" placeholder="Updated name">
-                <input type="submit" value="Update">
-            </div>
-            <span class="text-danger" id="errorCard" style="display: none;">Error</span>
-        </form>
-    </div>
-
-
-    <div id="change-email-container" class="edit-container edit-email-container">
-        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="userForm d-flex flex-column align-items-center" action="/update-email" method="post">
-            <div class="form-group d-flex flex-column align-items-center gap-3">
-                <input type="email" name="updatedEmail" placeholder="Updated email">
-                <input type="password" name="password" placeholder="Confirm your password">
-                <input type="submit" value="Update">
-            </div>
-            <span class="text-danger" class="errorCard" style="display: none;">Error</span>
-        </form>
-    </div>
-
-    <div id="change-password-container" class="edit-container edit-password-container">
-        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="userForm d-flex flex-column align-items-center" action="/update-password" method="post">
-            <div class="form-group d-flex flex-column align-items-center gap-3">
-                <input type="password" name="updatedPassword" placeholder="Updated Password">
-                <input type="password" name="confirmPassword" placeholder="Confirm your password">
-                <input type="submit" value="Update">
-            </div>
-            <span class="text-danger" class="errorCard" style="display: none;">Error</span>
-        </form>
-    </div>
-
-    <div id="change-picture-container" class="edit-container edit-profile-container">
-        <button type="button" class="btn-close btn-close-white close-containers mb-4" aria-label="Close"></button>
-        <form class="" action="/update-profile-picture" method="post" enctype="multipart/form-data">
-            <div class="d-flex justify-content-around">
-                <input type="file" name="updatedPicture">
-                <input type="submit" value="Update">
-            </div>
-            <span class="text-danger" class="errorCard" style="display: none;">Error</span>
-        </form>
-    </div>
 
 
     <script src="/js/edit-profile.js"></script>

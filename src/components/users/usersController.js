@@ -106,7 +106,6 @@ async function updateEmail(req, res, next) {
     const {updatedEmail, password} = req.body
     const errors = validationResult(req)
     if(errors.errors.length > 0) return res.status(400).json(errors)
-    // TO-DO: ADD PASSWORD VALIDATION MIDDLEWARE TO CHANGE EMAIL
     
     try {
         const currentUser = await User.findUserById(userId)
@@ -139,7 +138,6 @@ async function updateProfilePicture(req, res, next) {
     const {userId} = req.cookies
     if(!req.file || req.file.size > 2000000) return res.status(400).json({errors: [{msg: 'Invalid file.'}]})
 
-    // TO-DO: ADD THE CLOUDINARY LOGIC INTO THE USER MODEL AND VALIDATION TO FILE SIZE
     try {
         const uploadFile = await cloudInit.uploader.upload(file.path, {public_id: userId, })
         await User.updateProfilePicture(userId, uploadFile.url)
