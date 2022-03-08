@@ -36,8 +36,6 @@ app.use("/", userRoutes.router)
 export default { app };
 
 
-// Ve a respeito sobre o leak, tenta modificar o edit profile, diminuindo eventos
-// ADD THE CLOUDINARY LOGIC INTO THE USER MODEL AND VALIDATION TO FILE SIZE
 // MELHORA O CODIGO EM GERAL
 // MUDAR ALGUNS POST PRA PUT VIA AJAX TBM
 // ADICIONAR A OPCAO DE EDITAR E APAGAR PALAVRAS / HORAS

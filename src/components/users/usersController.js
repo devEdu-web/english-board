@@ -19,8 +19,8 @@ function getRegisterPage(req, res, next) {
 }
 
 async function getEditProfilePage(req, res, next) {
-    const {userId} = req.cookies
-
+    const {userId} = req.cookies;
+    
     try {
         const currentUser = await User.findUserById(userId)
         res.render('edit-profile-page', {user: currentUser})
@@ -141,10 +141,5 @@ export {
     registerUser,
     logUser,
     userLogout,
-    updateName,
-    updateEmail,
-    updatePassword,
-    updateProfilePicture,
     updateProfile
-    
 }
