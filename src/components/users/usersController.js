@@ -85,70 +85,6 @@ function userLogout(req, res, next) {
     res.redirect('/login')
 }
 
-
-async function updateName(req, res, next) {
-    const {userId} = req.cookies
-    const {updatedName} = req.body
-    const errors = validationResult(req)
-    if(errors.errors.length > 0) return res.status(400).json(errors)
-
-    try {
-        await User.updateName(userId, updatedName)
-        res.cookie('userName', updatedName)
-        res.redirect('/edit-profile')
-    } catch(error) {
-        res.status(500).json({errors: [{msg: error.message}]})
-    }
-
-}
-
-async function updateEmail(req, res, next) {
-    const {userId} = req.cookies
-    const {updatedEmail, password} = req.body
-    const errors = validationResult(req)
-    if(errors.errors.length > 0) return res.status(400).json(errors)
-    
-    try {
-        const currentUser = await User.findUserById(userId)
-        const passwordsMatch = await bcrypt.compare(password, currentUser.password)
-        if(!passwordsMatch) return res.status(400).json({errors: [{msg: 'Invalid password'}]})
-        await User.updateEmail(userId, updatedEmail)
-        res.redirect('/edit-profile')
-    } catch(error) {
-        res.status(500).json({errors: [{msg: error.message}]})
-    }
-}
-
-async function updatePassword(req, res, next) {
-    const {userId} = req.cookies
-    const {updatedPassword} = req.body
-    const errors = validationResult(req)
-    if(errors.errors.length > 0) return res.status(400).json(errors)
-
-    try {
-        const encryptedPassword = await bcrypt.hash(updatedPassword, 10)
-        User.updatePassword(userId, encryptedPassword)
-        res.redirect('/edit-profile')
-    } catch(error) {
-        res.status(500).json({errors: [{msg: error.message}]})
-    }
-}
-
-async function updateProfilePicture(req, res, next) {
-    const file = req.file
-    const {userId} = req.cookies
-    if(!req.file || req.file.size > 2000000) return res.status(400).json({errors: [{msg: 'Invalid file.'}]})
-
-    try {
-        const uploadFile = await cloudInit.uploader.upload(file.path, {public_id: userId, })
-        await User.updateProfilePicture(userId, uploadFile.url)
-        res.redirect('/edit-profile')
-
-    } catch(error) {
-        res.status(500).json({errors: [{msg: error.message}]})
-    }
-}
-
 async function updateProfile(req, res, next) {
     const {name, email, newPassword, confirmNewPassword, updatedPicture, currentPassword} = req.body
     const {userId} = req.cookies
@@ -193,11 +129,10 @@ async function updateProfile(req, res, next) {
         res.redirect('/edit-profile')
 
     } catch(error) {
-        console.log(error)
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 
 }
-
 
 export {
     getLoginPage,
