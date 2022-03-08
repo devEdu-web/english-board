@@ -13,7 +13,8 @@ import {
     updateName,
     updateEmail,
     updatePassword,
-    updateProfilePicture
+    updateProfilePicture,
+    updateProfile
 } from '../components/users/usersController.js'
 
 const router = Router()
@@ -32,9 +33,12 @@ router.post('/register', registerValidationRules, registerUser)
 
 // TO-DO: CHANGE THIS METHODS TO PUT
 // Update routes
-router.post('/update-name', updateNameRules, updateName)
-router.post('/update-email', updateEmailRules, updateEmail)
-router.post('/update-password', updatePasswordRules, updatePassword)
-router.post('/update-profile-picture', upload.single('updatedPicture'), updateProfilePicture)
+
+router.post('/edit-profile', upload.single('updatedPicture'), updateProfile)
+
+// router.post('/update-name', updateNameRules, updateName)
+// router.post('/update-email', updateEmailRules, updateEmail)
+// router.post('/update-password', updatePasswordRules, updatePassword)
+// router.post('/update-profile-picture', upload.single('updatedPicture'), updateProfilePicture)
 
 export default {router}

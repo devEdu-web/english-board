@@ -17,7 +17,8 @@
 
                     <img class="mb-3" src="<%= user.profilePicture.url == undefined ?' https://images8.alphacoders.com/109/1098031.png' : user.profilePicture.url %>" alt="">
                     <span class="fw-bolder"><%= user.name %> </span>
-                    <span class="fw-light"><%= user.email %> </span>
+                    <span class="fw-light mb-3"><%= user.email %> </span>
+                    <small class="text-danger" id="errorCard" style="display: none;">error</small>
                 </div>
 
             </div>
@@ -28,8 +29,7 @@
         <div class="row settings-row">
             
 
-        <form action="/edit-profile" method="post" class="d-flex flex-column gap-4">
-
+        <form name="userForm" action="/edit-profile" method="post" class="d-flex flex-column gap-4" enctype="multipart/form-data">
             <div class="row">
 
                 <div class="col col-12 col-sm-6">
@@ -42,7 +42,7 @@
                 <div class="col col-12 col-sm-6">
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="text" name="email" id="">
+                        <input type="email" name="email" id="">
                     </div>
                 </div>
 
@@ -54,14 +54,14 @@
                 <div class="col col-12 col-sm-6">
                     <div class="form-group">
                         <label for="">New Password</label>
-                        <input type="text" name="newPassword" id="">
+                        <input type="password" name="newPassword" id="">
                     </div>
                 </div>
 
                 <div class="col col-12 col-sm-6">
                     <div class="form-group">
                         <label for="">Confirm Password</label>
-                        <input type="text" name="confirmNewPassword" id="">
+                        <input type="password" name="confirmNewPassword" id="">
                     </div>
                 </div>
 
@@ -69,12 +69,13 @@
 
             <div class="row">
 
-                <div class="col col-12 col-sm-4">
+                <div class="col col-12 col-sm-12 align-self-start">
                     <div class="form-group">
                         <label for="">Picture</label>
                         <input type="file" name="updatedPicture" id="">
                     </div>
                 </div>
+
 
             </div>
 
@@ -91,7 +92,7 @@
 
             </div>
 
-
+            
         </form>
 
     </main>
@@ -99,8 +100,8 @@
 
 
 
-    <script src="/js/edit-profile.js"></script>
-    <script src="/js/updatesValidation.js"></script>
+    <!-- <script src="/js/edit-profile.js"></script> -->
+    <!-- <script src="/js/updatesValidation.js"></script> -->
     <script src="/js/updateFile.js"></script>
     
 </body>

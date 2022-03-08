@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import {User} from './User.js'
 import { UserProgress } from './UserProgress.js';
 import { validationResult } from 'express-validator';
+import { verifyEmail } from '../../util/verifyEmail.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const cloudInit = cloudinary.v2
 
@@ -148,6 +149,55 @@ async function updateProfilePicture(req, res, next) {
     }
 }
 
+async function updateProfile(req, res, next) {
+    const {name, email, newPassword, confirmNewPassword, updatedPicture, currentPassword} = req.body
+    const {userId} = req.cookies
+    const {file} = req
+    const user = await User.findUserById(userId)
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password)
+    
+    try {
+        if(!name && !email && !newPassword && !file) return res.status(400).json({errors: [{msg: 'Nothing to update.'}]})
+
+        if(name) {
+            if(name.length < 3) return res.status(400).json({errors: [{msg: 'Name must be 3 characters.'}]})
+            await User.updateName(userId, name)
+        } 
+
+        if(email) {
+            const isEmailValid = verifyEmail(email)
+            const repeatedUser = await User.findUserByEmail(email)
+
+            console.log(repeatedUser)
+
+            if(repeatedUser) return res.status(400).json({errors: [{msg: 'Email already exists.'}]})
+            if(!isEmailValid) return res.status(400).json({errors: [{msg: 'Invalid email.'}]})
+            await User.updateEmail(userId, email)
+        }
+        
+        if(newPassword) {
+            if(newPassword.length < 6) return res.status(400).json({errors: [{msg: 'Passwords must be 6 character long.'}]})
+            if(newPassword !== confirmNewPassword) return res.status(400).json({errors: [{msg: 'Passwords does not match.'}]})
+            const encryptedPassword = await bcrypt.hash(newPassword, 10)
+            User.updatePassword(userId, encryptedPassword)
+        }
+
+        if(file) {
+            if(file.size > 2000000) return res.status(400).json({errors: [{msg: 'File must be max 2Mb.'}]})
+            const uploadFile = await cloudInit.uploader.upload(file.path, {public_id: userId, })
+            await User.updateProfilePicture(userId, uploadFile.url)
+        }
+        
+        if(!isCurrentPasswordValid) return res.status(400).json({errors: [{msg: 'Invalid password.'}]})
+        
+        res.redirect('/edit-profile')
+
+    } catch(error) {
+        console.log(error)
+    }
+
+}
+
 
 export {
     getLoginPage,
@@ -159,5 +209,7 @@ export {
     updateName,
     updateEmail,
     updatePassword,
-    updateProfilePicture
+    updateProfilePicture,
+    updateProfile
+    
 }
