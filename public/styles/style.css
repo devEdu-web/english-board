@@ -32,6 +32,7 @@ main {
     padding: 10px 32px;
     margin: 32px;
     min-height: 30vh;
+    box-shadow: rgba(0, 0, 0, 0.40) 0px 5px 15px;
 }
 
 .row {
