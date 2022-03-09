@@ -6,7 +6,7 @@ function canUserAccessAdminPages(req, res, next) {
         jwt.verify(tk, process.env.JWT_SECRET)
         next()
     } catch (e) {
-        res.redirect('/login')
+        res.redirect('/home')
     }
 
 }
@@ -15,7 +15,7 @@ function verifyUserAuthentication(req, res, next) {
     const {tk} = req.cookies
     try {
         jwt.verify(tk, process.env.JWT_SECRET)
-        res.redirect('/')
+        res.redirect('/home')
     } catch(e) {
         next()
     }
