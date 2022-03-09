@@ -1,31 +1,33 @@
 const errorCard = document.getElementById('errorCard')
-const userForms = document.getElementsByClassName('userForm')
+const userForm = document.getElementById('change-picture-container')
 
-for(let i = 0; i < userForms.length; i++) {
-    userForms[i].addEventListener('submit', postRegister)
-}
+document.userForm.onsubmit = postRegister
 
 async function postRegister(event) {
     event.preventDefault(event)
 
-    const errorAlert = event.target.children[1]
     const form = event.target
     const userData = new FormData(form)
     const options = {
         method: 'POST',
-        body: new URLSearchParams(userData),
+        body: userData,
         redirect: 'follow',
 
     }
 
+
     try {
         const response = await fetch(form.action, options)
-        console.log(response)
         if(response.status >= 400) {
             const json = await response.json()
             console.log(JSON.stringify(json))
-            errorAlert.innerHTML = json.errors[0].msg
-            errorAlert.style.display = 'block'
+            errorCard.innerHTML = json.errors[0].msg
+            errorCard.style.display = 'block'
+
+            setTimeout(() => {
+                errorCard.style.display = 'none'
+            }, 2000)
+
         } else {
             window.location.href = response.url
         }
