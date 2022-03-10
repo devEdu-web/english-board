@@ -15,7 +15,7 @@ body {
 }
 
 main {
-    height: 90vh;
+    min-height: 90vh;
     padding: 2rem;
     width: 50vw;
     border-radius: 20px;
@@ -105,20 +105,31 @@ button, input[type="submit"] {
 }
 
 form {
+    /* background-color: red; */
     width: 100%;
 }
 
-.form-group {
-    width: 100%;
-}
+
 
 input[type='text'], input[type='password'], input[type='email'] {
-    width: 60%;
+    width: 100%;
     padding: 3px;
     background-color: #181824;
     color: white;
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.685);
+}
+
+input[type="submit"] {
+    font-size: 0.9rem;
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    background-color: #D90368;
+    color: white;
+    font-weight: bolder;
+
 }
 
 @media screen and (max-width: 930px) {
@@ -152,11 +163,15 @@ input[type='text'], input[type='password'], input[type='email'] {
     }
 }
 
+@media screen and (max-width: 520px) {
+    input[name='currentPassword'] {
+        margin-bottom: 20px;
+    }
+}
+
 @media screen and (max-width: 450px) {
     main {
-        height: 80vh;
         width: 95vw;
-        /* padding: 20px; */
         padding: 5px;
         padding-top: 25px;
     }

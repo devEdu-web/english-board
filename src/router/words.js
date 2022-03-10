@@ -1,12 +1,12 @@
 import { Router } from "express";
-import * as wordsController from "../components/words/wordsController.js";
-import * as userAuth from '../components/users/userAuth.js'
-import * as validation from '../components/words/wordsValidation.js'
+import {getAddWordsPage, getWordsListPage, addNewWord} from "../components/words/wordsController.js";
+import {canUserAccessAdminPages} from '../components/users/userAuth.js'
+import {wordValidationRules} from '../components/words/wordsValidation.js'
 const router = Router();
 
-router.get("/add-new-words", userAuth.authentication, wordsController.getAddWordsPage);
-router.get("/words-list", userAuth.authentication, wordsController.getWordsListPage);
+router.get("/add-new-words", canUserAccessAdminPages, getAddWordsPage);
+router.get("/words-list", canUserAccessAdminPages, getWordsListPage);
 
-router.post("/post-word", validation.wordValidation, wordsController.getWordsInfo);
+router.post("/post-word", wordValidationRules, addNewWord);
 
 export default { router };

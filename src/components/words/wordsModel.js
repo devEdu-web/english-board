@@ -6,17 +6,12 @@ class Word {
         this.wordName = wordName, 
         this.wordClass = wordClass,
         this.save = () => {
-            // const db = getDb()
             return db.collection("words-list").insertOne(this);  
         }
     }
 
     static getAllWords() {
-        // const db = getDb()
-
         return db.collection("words-list").find()
-
-
     }
 }
 

@@ -1,43 +1,51 @@
 import {UserProgress} from '../users/UserProgress.js'
 import {User} from '../users/User.js'
+import {validationResult} from 'express-validator'
+
 async function getAddWordsPage(req, res, next) {
-    const userId = req.cookies.userId
-    const userName = req.cookies.userName
-    const userProgress = await UserProgress.getUserProgress(userId)
-    const userInfo = await User.findUserById(userId)
-    res.render("words", {userName, userProgress, userInfo});
+    const {userId, userName} = req.cookies
+
+    try {
+        const userProgress = await UserProgress.getUserProgress(userId)
+        const userInfo = await User.findUserById(userId)
+        res.render("words", {userName, userProgress, userInfo});
+    } catch(error) {
+        res.status(500).json({errors: [{msg: error.message}]})
+    }
 }
 
 async function getWordsListPage(req, res, next) {
-    const userName = req.cookies.userName
+    const {userName, userId} = req.cookies
+
     try {
-        const userId = req.cookies.userId
+        
         const userProgress = await UserProgress.getUserProgress(userId)
         const userInfo = await User.findUserById(userId)
         res.render('words-list', {userProgress, userName, userInfo})
 
-    } catch(e) {
-        res.send(e)
+    } catch(error) {
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 
 }
 
-async function getWordsInfo(req, res, next) {
+async function addNewWord(req, res, next) {
+    const {userId} = req.cookies
+    const wordInfo = req.body
+    const word = wordInfo.word
+    const wordClass = wordInfo.wordClass
+    const errors = validationResult(req)
+    if(errors.errors.length > 0) return res.status(400).json(errors) 
 
     try {
-        const userId = req.cookies.userId
-        const wordInfo = req.body
-        const word = wordInfo.word
-        const wordClass = wordInfo.wordClass
-    
+
         await UserProgress.updateWordsInfo(userId, word, wordClass)
-    
         res.redirect('/words/words-list')
 
-    } catch(e) {
-        res.send(e)
+    } catch(error) {
+        res.status(500).json({errors: [{msg: error.message}]})
     }
 
 }
 
-export { getAddWordsPage, getWordsListPage, getWordsInfo };
+export { getAddWordsPage, getWordsListPage, addNewWord };

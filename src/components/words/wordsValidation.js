@@ -1,15 +1,9 @@
-function wordValidation(req, res, next) {
-    const {word} = req.body
-    const errors = []
+import {body} from 'express-validator'
 
-    if(word.length <= 0) {
-        errors.push('Please, type a word')
-    }
 
-    if(errors.length <= 0) return next()
+const wordValidationRules = [
+    body('word').not().isEmpty().withMessage('Please type a word.')
+]
 
-    res.status(400).json({errors})
 
-}
-
-export {wordValidation}
+export {wordValidationRules}

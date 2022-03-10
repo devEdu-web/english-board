@@ -1,12 +1,12 @@
 import {Router} from 'express'
-import * as hoursController from '../components/hours/hoursController.js'
-import * as userAuth from '../components/users/userAuth.js'
-import * as validation from '../components/hours/hoursValidation.js'
+import {getAddHourRegisterPage, getHoursRegisterPage, postHour} from '../components/hours/hoursController.js'
+import {canUserAccessAdminPages} from '../components/users/userAuth.js'
+import {hourValidationRules} from '../components/hours/hoursValidation.js'
 const router = Router()
 
-router.get('/add-new-hours', userAuth.authentication, hoursController.getAddHourRegisterPage)
-router.get('/hours-register', userAuth.authentication, hoursController.getHoursRegisterPage)
+router.get('/add-new-hours', canUserAccessAdminPages, getAddHourRegisterPage)
+router.get('/hours-register', canUserAccessAdminPages, getHoursRegisterPage)
 
-router.post('/post-hour', validation.hourValidation, hoursController.postHour)
+router.post('/post-hour', hourValidationRules, postHour)
 
 export default {router}

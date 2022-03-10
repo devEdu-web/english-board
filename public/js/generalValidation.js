@@ -19,11 +19,11 @@ async function postRegister(event) {
         const response = await fetch(form.action, options)
         console.log(response)
         
-        if(response.status === 400) {
+        if(response.status >= 400) {
             const json = await response.json()
             console.log(JSON.stringify(json))
             errorCard.style.display = 'block'
-            errorCard.innerHTML = json.errors[0]
+            errorCard.innerHTML = json.errors[0].msg
         } else {
             window.location.href = response.url
         }
