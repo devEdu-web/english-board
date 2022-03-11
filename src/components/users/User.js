@@ -1,5 +1,6 @@
-import {db} from '../../config/database.js'
+// import {db} from '../../config/database.js'
 import {ObjectId} from 'mongodb'
+import {getDb} from '../../config/database.js'
 
 class User {
     constructor(name, email, password, profilePicture = {url: undefined}) {
@@ -11,20 +12,24 @@ class User {
     }
 
     save() {
+        const db = getDb()
         return db.collection('users').insertOne(this)
     }
 
     static findUserByEmail(email) {
+        const db = getDb()
         return db.collection('users').findOne({email})
     }
 
     static findUserById(userId) {
+        const db = getDb()
         return db.collection('users').findOne({
             _id: new ObjectId(userId)
         })
     }
 
     static updateName(userId, updatedName) {
+        const db = getDb()
         return db.collection('users').updateOne(
             {_id: new ObjectId(userId)},
             {$set: {name: updatedName}}   
@@ -32,6 +37,7 @@ class User {
     }
 
     static updateEmail(userId, updatedEmail) {
+        const db = getDb()
         return db.collection('users').updateOne(
             {_id: new ObjectId(userId)},
             {$set: {email: updatedEmail} }
@@ -39,6 +45,7 @@ class User {
     }
 
     static updatePassword(userId, updatedPassword) {
+        const db = getDb()
         return db.collection('users').updateOne(
             {_id: new ObjectId(userId)},
             {$set: {password: updatedPassword}}
@@ -46,6 +53,7 @@ class User {
     }
 
     static updateProfilePicture(userId, url) {
+        const db = getDb()
         return db.collection('users').updateOne(
             {_id: new ObjectId(userId)},
             {$set: {"profilePicture.url": url}}

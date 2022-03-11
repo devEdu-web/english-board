@@ -26,4 +26,4 @@ function getDb() {
     }
 }
 
-export { connectingToDatabase, db };
+export { connectingToDatabase, db, getDb};
