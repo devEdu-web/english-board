@@ -131,7 +131,7 @@ button {
 @media screen and (max-width: 390px) {
     .menu-mobile {
         width: 70vw;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     input[type="text"] {
