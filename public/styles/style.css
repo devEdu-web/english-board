@@ -88,6 +88,11 @@ button {
 
     .menu-mobile {
         display: flex;
+        justify-content: flex-start;
+    }
+
+    ul {
+        width: 100%;
     }
 
     .user {
@@ -118,7 +123,7 @@ button {
 
 @media screen and (max-width: 450px) {
     .image-list{
-        width: 30px;
+        width: 40px;
     }
 
 }
@@ -126,7 +131,7 @@ button {
 @media screen and (max-width: 390px) {
     .menu-mobile {
         width: 70vw;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     input[type="text"] {
