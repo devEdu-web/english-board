@@ -16,7 +16,7 @@ class UserProgress {
             {userId: new ObjectId(userId)},
             {
                 $inc: {"hours.hoursCounter": Number(updatedCounter)},
-                $push: {"hours.hoursInfo": {[updatedHourInfo]: updatedCounter}}
+                $push: {"hours.hoursInfo": {[updatedHourInfo]: updatedCounter, hourInfoId: new ObjectId()}}
             }
         )
     }
@@ -27,7 +27,7 @@ class UserProgress {
             {userId: new ObjectId(userId)},
             {
                 $inc: {"words.wordsCounter": 1},
-                $push: {"words.userWords": {wordName: word, wordClass}}
+                $push: {"words.userWords": {wordName: word, wordClass, wordId: new ObjectId()}}
             }
         )
 
@@ -36,6 +36,17 @@ class UserProgress {
     static getUserProgress(userId) {
         return db.collection('userProgress').findOne({userId: new ObjectId(userId)})
     }
+
+    static deleteWord(userId, wordId) {
+        return db.collection('userProgress').updateOne(
+            {userId: new ObjectId(userId)},
+            {
+                $pull: {'words.userWords': {wordId: new ObjectId(wordId)}},
+                $inc: {'words.wordsCounter': -1}
+            }
+        )
+    }
+
 }
 
 export {UserProgress}
