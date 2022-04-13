@@ -12,6 +12,7 @@ async function getDashboardPage(req, res, next) {
         const hours = await getHoursPercentage(userId)
         const userInfo = await User.findUserById(userId)
         const userProgress = await UserProgress.getUserProgress(userId)
+        console.log(userProgress)
         res.render('index', {
             userName,
             userProgress,

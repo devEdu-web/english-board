@@ -47,6 +47,16 @@ class UserProgress {
         )
     }
 
+    static deleteHour(userId, hourInfoId, amountDeleted) {
+        return db.collection('userProgress').updateOne(
+            {userId: new ObjectId(userId)},
+            {
+                $pull: {'hours.hoursInfo': {hourInfoId: new ObjectId(hourInfoId)}},
+                $inc: {'hours.hoursCounter': -amountDeleted}
+            }
+        )
+    }
+
 }
 
 export {UserProgress}
