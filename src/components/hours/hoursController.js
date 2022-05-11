@@ -53,7 +53,6 @@ async function deleteHour(req, res, next) {
         await UserProgress.deleteHour(userId, hourId, amount_deleted)
         res.sendStatus(200)
     } catch(error) {
-        console.log(error)
         res.sendStatus(400)
     }
 

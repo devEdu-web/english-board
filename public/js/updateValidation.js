@@ -20,7 +20,6 @@ async function postRegister(event) {
         const response = await fetch(form.action, options)
         if(response.status >= 400) {
             const json = await response.json()
-            console.log(JSON.stringify(json))
             errorCard.innerHTML = json.errors[0].msg
             errorCard.style.display = 'block'
 
@@ -33,7 +32,7 @@ async function postRegister(event) {
         }
 
     } catch(e) {
-        console.log(e)
+        throw e
     }
 
 
