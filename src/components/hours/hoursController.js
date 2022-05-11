@@ -1,6 +1,7 @@
 import {UserProgress} from '../users/UserProgress.js'
 import {User} from '../users/User.js'
 import {validationResult} from 'express-validator'
+import {ObjectId} from 'mongodb'
 
 async function getAddHourRegisterPage(req, res, next) {
     const {userId, userName} = req.cookies
@@ -42,4 +43,19 @@ async function postHour(req, res, next) {
     }    
 }
 
-export {getAddHourRegisterPage, getHoursRegisterPage, postHour};
+async function deleteHour(req, res, next) {
+    const {userId} = req.cookies
+    const hourId = req.query.hourInfoId
+    const amount_deleted = req.query.amount_deleted
+
+
+    try {
+        await UserProgress.deleteHour(userId, hourId, amount_deleted)
+        res.sendStatus(200)
+    } catch(error) {
+        res.sendStatus(400)
+    }
+
+}
+
+export {getAddHourRegisterPage, getHoursRegisterPage, postHour, deleteHour};

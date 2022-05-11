@@ -21,6 +21,7 @@ async function getWordsListPage(req, res, next) {
         
         const userProgress = await UserProgress.getUserProgress(userId)
         const userInfo = await User.findUserById(userId)
+        console.dir(userProgress, {depth: null})
         res.render('words-list', {userProgress, userName, userInfo})
 
     } catch(error) {
@@ -48,4 +49,17 @@ async function addNewWord(req, res, next) {
 
 }
 
-export { getAddWordsPage, getWordsListPage, addNewWord };
+async function deleteWord(req, res, next) {
+    const {id: wordId} = req.params
+    const {userId} = req.cookies
+
+    try {
+        await UserProgress.deleteWord(userId, wordId)
+        res.sendStatus(200)
+    } catch(error) {
+        res.sendStatus(404)
+    }
+
+}
+
+export { getAddWordsPage, getWordsListPage, addNewWord, deleteWord };
